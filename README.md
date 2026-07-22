@@ -5,7 +5,7 @@
 - 🎯 論文完成階段
 - 📚 論文閱讀技巧
 - 💬 Meeting 技巧
-- 🧠 教學區（連結至 [tutorial/index.html](./tutorial/index.html)）：機器學習 / 深度學習與醫學影像基礎知識，共 22 堂課，涵蓋模型驗證、不平衡分類、影像分割、傳統機器學習模型、深度學習架構、Transformer、遷移學習與資料增強。每堂課都有圖解、白話說明、對應的可執行程式碼（[tutorial/lessons/](./tutorial/lessons/)，使用 MNIST / CIFAR-10 / Breast Cancer Wisconsin 等真實資料集）與課後練習，詳見 [tutorial/README.md](./tutorial/README.md)。
+- 🧠 教學區（連結至 [tutorial/index.html](./tutorial/index.html)）：機器學習 / 深度學習與醫學影像基礎知識，共 22 堂課，涵蓋模型驗證、不平衡分類、影像分割、傳統機器學習模型、深度學習架構、Transformer、遷移學習與資料增強。每堂課都有圖解、白話說明、對應的可執行程式碼（[tutorial/lessons/](./tutorial/lessons/)，使用 MNIST / CIFAR-10 / Breast Cancer Wisconsin 等真實資料集）與課後練習，詳見 [tutorial/README.md](https://github.com/HIBIOLab/HIBIO_Lab/tree/main/tutorial)。
 
 ## 使用方式
 
