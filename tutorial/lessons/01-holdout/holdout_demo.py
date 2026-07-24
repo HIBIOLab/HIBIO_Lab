@@ -19,7 +19,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 from sklearn.preprocessing import StandardScaler
 
-RANDOM_SEEDS = list(range(10))
+RANDOM_SEEDS = [1,36,87,96,111,666,1111,1234,2026,6666]
 
 
 def load_data():
@@ -66,7 +66,7 @@ def main():
     accs_no_strat = np.array(accs_no_strat)
     print(f"  不 stratify: mean={accs_no_strat.mean():.4f}, std={accs_no_strat.std():.4f}")
     print(f"  有 stratify: mean={accs.mean():.4f}, std={accs.std():.4f}")
-    print("=> stratify 通常能讓不同切分之間的變異稍微小一點，尤其在類別不平衡時效果更明顯。")
+    print("=> stratify 在類別不平衡時通常能讓不同切分之間的變異稍微小一點。")
 
 
 if __name__ == "__main__":

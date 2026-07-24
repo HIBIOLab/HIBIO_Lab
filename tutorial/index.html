@@ -12,17 +12,22 @@
             box-sizing: border-box;
         }
 
+        html {
+            overflow-x: hidden;
+        }
+
         body {
-            font-family: 'Segoe UI', 'Microsoft JhengHei', sans-serif;
+            font-family: 'Segoe UI', 'Microsoft JhengHei', 'PingFang TC', 'Noto Sans TC', sans-serif;
             line-height: 1.7;
             color: #333;
             background: linear-gradient(160deg, #eef5fc 0%, #f7fbfe 45%, #e9f2fb 100%);
             min-height: 100vh;
             position: relative;
+            overflow-x: hidden;
         }
 
         .bg-waves {
-            position: fixed;
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
@@ -44,13 +49,16 @@
             border-radius: 20px;
             margin-bottom: 30px;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            -webkit-backdrop-filter: blur(10px);
             backdrop-filter: blur(10px);
         }
 
         .header h1 {
             font-size: 2.2em;
+            color: #1d4ed8;
             background: linear-gradient(45deg, #3b82f6, #1d4ed8);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 10px;
         }
@@ -134,6 +142,7 @@
             padding: 40px;
             border-radius: 20px;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            -webkit-backdrop-filter: blur(10px);
             backdrop-filter: blur(10px);
             animation: fadeIn 0.5s ease-in-out;
             margin-bottom: 30px;
@@ -300,6 +309,7 @@
         .lesson-body code {
             padding: 2px 6px;
             font-size: 0.9em;
+            word-break: break-word;
         }
 
         .lesson-body pre {
@@ -308,6 +318,8 @@
             margin: 10px 0;
             font-size: 0.85em;
             line-height: 1.5;
+            white-space: pre-wrap;
+            word-break: break-word;
         }
 
         .goal-box {
@@ -327,13 +339,55 @@
         }
 
         .diagram svg {
+            display: block;
             max-width: 100%;
             height: auto;
+            margin: 0 auto;
             background: #fbfbfe;
             border: 1px solid rgba(59, 130, 246, 0.15);
             border-radius: 12px;
             padding: 8px;
             box-sizing: border-box;
+        }
+
+        .real-data-row {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .real-data-figure {
+            margin: 0;
+            max-width: 320px;
+            width: 100%;
+        }
+
+        .real-data-figure img {
+            display: block;
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            border: 1px solid rgba(59, 130, 246, 0.15);
+            background: #000;
+        }
+
+        .real-data-figure figcaption {
+            font-size: 0.82em;
+            color: #777;
+            text-align: center;
+            margin-top: 6px;
+        }
+
+        .data-source-note {
+            font-size: 0.82em;
+            color: #888;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .data-source-note a {
+            color: #1d4ed8;
         }
 
         .med-box {
@@ -346,6 +400,62 @@
 
         .med-box strong {
             color: #1d4ed8;
+        }
+
+        .dataset-intro-box {
+            background: rgba(16, 185, 129, 0.08);
+            border: 1px solid rgba(16, 185, 129, 0.35);
+            border-left: 5px solid #10b981;
+            padding: 16px 20px;
+            margin: 18px 0 22px;
+            border-radius: 10px;
+        }
+
+        .dataset-intro-box h3 {
+            margin: 0 0 8px;
+            color: #0f766e;
+            font-size: 1.05em;
+        }
+
+        .dataset-intro-box ul {
+            margin: 8px 0 8px 18px;
+        }
+
+        .dataset-intro-box li {
+            margin-bottom: 5px;
+        }
+
+        .dataset-intro-box a {
+            color: #0f766e;
+            font-weight: 600;
+        }
+
+        .formula-box {
+            background: rgba(29, 78, 216, 0.05);
+            border: 1px solid rgba(29, 78, 216, 0.18);
+            border-radius: 8px;
+            padding: 10px 18px 14px;
+            margin: 14px 0;
+            text-align: center;
+            overflow-x: auto;
+        }
+
+        .formula-box .formula-label {
+            display: block;
+            text-align: center;
+            font-size: 0.75em;
+            font-weight: 700;
+            color: #1d4ed8;
+            letter-spacing: 0.03em;
+            margin-bottom: 6px;
+        }
+
+        .formula-box code {
+            font-family: Consolas, 'Courier New', monospace;
+            font-size: 1.02em;
+            background: transparent;
+            padding: 0;
+            white-space: nowrap;
         }
 
         .code-panel {
@@ -371,6 +481,8 @@
             padding: 0;
             font-size: 0.95em;
             white-space: pre-wrap;
+            word-break: break-word;
+            overflow-x: auto;
         }
 
         .code-panel .dataset-line {
@@ -444,7 +556,7 @@ conda create -n hibio-tutorial python=3.10 -y
 conda activate hibio-tutorial
 pip install -r requirements.txt</pre>
                 之後進到任一課的資料夾直接 <code>python xxx_demo.py</code> 就能執行。第一次在 Windows 上裝 GPU 環境（顯示卡驅動、CUDA/cuDNN）的完整說明都在
-                <a href="https://github.com/HIBIOLab/HIBIO_Lab/tree/main/tutorial">Readme.md</a>。
+                <a href="https://github.com/HIBIOLab/HIBIO_Lab/tree/main/tutorial">tutorial/README.md</a>。
             </div>
         </div>
 
@@ -522,7 +634,7 @@ pip install -r requirements.txt</pre>
 
                         <h4>💻 動手做</h4>
                         <div class="code-panel">
-                            <div class="code-title">📁 tutorial/lessons/01-holdout/holdout_demo.py</div>
+                            <div class="code-title">💻 程式碼 01｜📁 tutorial/lessons/01-holdout/holdout_demo.py</div>
                             <pre>cd tutorial/lessons/01-holdout
 python holdout_demo.py</pre>
                             <div class="dataset-line">📊 資料集：Breast Cancer Wisconsin (Diagnostic) — sklearn 內建，免下載，569 位病人、良性/惡性標籤</div>
@@ -619,7 +731,7 @@ python holdout_demo.py</pre>
 
                         <h4>💻 動手做</h4>
                         <div class="code-panel">
-                            <div class="code-title">📁 tutorial/lessons/02-kfold-cv/kfold_demo.py</div>
+                            <div class="code-title">💻 程式碼 02｜📁 tutorial/lessons/02-kfold-cv/kfold_demo.py</div>
                             <pre>cd tutorial/lessons/02-kfold-cv
 python kfold_demo.py</pre>
                             <div class="dataset-line">📊 資料集：Breast Cancer Wisconsin (Diagnostic) — sklearn 內建，免下載</div>
@@ -672,7 +784,11 @@ python kfold_demo.py</pre>
                             <li><strong>FP（False Positive，假陽性）：</strong>其實沒有腫瘤，模型卻說有 —— 誤報 / 假警報</li>
                             <li><strong>FN（False Negative，假陰性）：</strong>其實有腫瘤，模型卻說沒有 —— 漏診，通常代價最高</li>
                         </ul>
-                        <p>把這四個數字排成一個 2x2 的表格，就是「混淆矩陣」。<code>Accuracy（準確率）= (TP+TN) / 全部</code>，直覺上就是「猜對的比例」，聽起來很合理，但當資料嚴重不平衡時，這個看似合理的指標會給你一個非常誤導的高分。</p>
+                        <p>把這四個數字排成一個 2x2 的表格，就是「混淆矩陣」，Accuracy（準確率）的定義如公式 1，直覺上就是「猜對的比例」，聽起來很合理，但當資料嚴重不平衡時，這個看似合理的指標會給你一個非常誤導的高分。</p>
+                        <div class="formula-box">
+                            <span class="formula-label">公式 1・Accuracy</span>
+                            <code>Accuracy = (TP + TN) / (TP + TN + FP + FN)</code>
+                        </div>
 
                         <h4>圖解</h4>
                         <div class="diagram">
@@ -716,7 +832,7 @@ python kfold_demo.py</pre>
 
                         <h4>💻 動手做</h4>
                         <div class="code-panel">
-                            <div class="code-title">📁 tutorial/lessons/03-confusion-matrix/confusion_matrix_demo.py</div>
+                            <div class="code-title">💻 程式碼 03｜📁 tutorial/lessons/03-confusion-matrix/confusion_matrix_demo.py</div>
                             <pre>cd tutorial/lessons/03-confusion-matrix
 python confusion_matrix_demo.py</pre>
                             <div class="dataset-line">📊 資料集：MNIST（torchvision 自動下載），改造成「是不是數字 0」的二元分類，並把陽性比例壓到 2% 模擬醫學篩檢的不平衡</div>
@@ -758,7 +874,19 @@ python confusion_matrix_demo.py</pre>
                             <li><strong>Precision（精確率）</strong>問的是：「模型說『有病』的這些人裡面，真的有病的比例是多少？」— 也就是<strong>模型講話可不可信</strong>。Precision 低，代表很多「假警報」，會讓病人做不必要的追加檢查、白白擔心受怕。</li>
                             <li><strong>Recall（召回率，也叫 Sensitivity）</strong>問的是：「真正有病的人裡面，模型抓到了多少？」— 也就是<strong>模型有沒有漏網之魚</strong>。Recall 低，代表很多真正的病人被模型放過去了（漏診），這在醫療上通常是最不能接受的錯誤。</li>
                         </ul>
-                        <p>公式：<code>Precision = TP / (TP + FP)</code>，<code>Recall = TP / (TP + FN)</code>。<strong>F1-score</strong> 是兩者的調和平均 <code>F1 = 2·Precision·Recall / (Precision + Recall)</code>，用在你需要「兩者都不能太差」的情境；但如果你的任務明顯更在乎其中一個（比如篩檢任務更怕漏診），直接看 Recall 或 Precision 反而比看 F1 更直接。</p>
+                        <p>Precision、Recall、F1-score 的定義分別如公式 2、3、4。<strong>F1-score</strong> 是 Precision 與 Recall 的調和平均，用在你需要「兩者都不能太差」的情境；但如果你的任務明顯更在乎其中一個（比如篩檢任務更怕漏診），直接看 Recall 或 Precision 反而比看 F1 更直接。</p>
+                        <div class="formula-box">
+                            <span class="formula-label">公式 2・Precision</span>
+                            <code>Precision = TP / (TP + FP)</code>
+                        </div>
+                        <div class="formula-box">
+                            <span class="formula-label">公式 3・Recall</span>
+                            <code>Recall = TP / (TP + FN)</code>
+                        </div>
+                        <div class="formula-box">
+                            <span class="formula-label">公式 4・F1-score</span>
+                            <code>F1 = 2 · Precision · Recall / (Precision + Recall)</code>
+                        </div>
 
                         <h4>圖解</h4>
                         <div class="diagram">
@@ -789,7 +917,7 @@ python confusion_matrix_demo.py</pre>
 
                         <h4>💻 動手做</h4>
                         <div class="code-panel">
-                            <div class="code-title">📁 tutorial/lessons/04-precision-recall-f1/precision_recall_f1_demo.py</div>
+                            <div class="code-title">💻 程式碼 04｜📁 tutorial/lessons/04-precision-recall-f1/precision_recall_f1_demo.py</div>
                             <pre>cd tutorial/lessons/04-precision-recall-f1
 python precision_recall_f1_demo.py</pre>
                             <div class="dataset-line">📊 資料集：MNIST，沿用第 3 課「是不是數字 0」的極端不平衡設定（陽性僅 2%）</div>
@@ -839,34 +967,38 @@ python precision_recall_f1_demo.py</pre>
                         <p>前面幾課的分類任務，是「一整張圖只給一個答案」（例如：這張片子有沒有腫瘤）。<strong>分割（Segmentation）</strong>要做的事情更細：不是回答一個答案，而是要幫「每一個像素」都做分類 —— 這個像素是腫瘤還是正常組織？把所有像素的答案拼起來，就會得到一張跟原圖一樣大小的「遮罩（mask）」，用顏色標出病灶的確切輪廓。</p>
                         <p>問題來了：在一張完整的醫學影像裡，真正的病灶通常只佔一小塊，其他絕大部分都是背景（正常組織、空氣、機台本身）。這代表分割任務的「類別不平衡」問題，往往比分類任務更誇張 —— 可能 99% 以上的像素都屬於背景。</p>
 
-                        <h4>圖解</h4>
+                        <h4>圖解：真實案例（3D-IRCADb-01 肝臟腫瘤 CT 資料集）</h4>
                         <div class="diagram">
-                            <svg viewBox="0 0 620 230" xmlns="http://www.w3.org/2000/svg">
-                                <text x="150" y="20" text-anchor="middle" font-size="12.5" fill="#555" font-weight="700">一張完整的醫學影像</text>
-                                <rect x="40" y="35" width="220" height="160" fill="#2b2b3a" rx="6"/>
-                                <circle cx="150" cy="115" r="10" fill="#ff5252"/>
-                                <text x="150" y="212" text-anchor="middle" font-size="11" fill="#555">紅點＝病灶（可能&lt;1%像素）</text>
-
-                                <text x="470" y="20" text-anchor="middle" font-size="12.5" fill="#555" font-weight="700">「猜全部都是背景」的模型</text>
-                                <rect x="360" y="35" width="220" height="160" fill="#2b2b3a" rx="6"/>
-                                <text x="470" y="185" text-anchor="middle" font-size="11" fill="#4caf50" font-weight="700">Pixel Accuracy 依然可以 &gt; 99%！</text>
-                                <text x="470" y="205" text-anchor="middle" font-size="11" fill="#e65100">但完全沒偵測到病灶，臨床無用</text>
-
-                                <line x1="290" y1="115" x2="330" y2="115" stroke="#999" stroke-width="2" marker-end="url(#arrow5)"/>
-                                <defs>
-                                    <marker id="arrow5" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
-                                        <path d="M0,0 L8,4 L0,8 z" fill="#999"/>
-                                    </marker>
-                                </defs>
-                            </svg>
+                            <div class="real-data-row">
+                                <figure class="real-data-figure">
+                                    <img src="assets/ircadb01_slice69_original.png" alt="腹部 CT 原始切片 #69">
+                                    <figcaption>原始 CT 切片（Slice #69）</figcaption>
+                                </figure>
+                                <figure class="real-data-figure">
+                                    <img src="assets/ircadb01_slice69_labeled.png" alt="標註後的 CT 切片，綠色為肝臟、紅色為腫瘤">
+                                    <figcaption>標註後：綠色＝肝臟，紅色＝腫瘤（此病人腫瘤最大的一張切片）</figcaption>
+                                </figure>
+                                <figure class="real-data-figure">
+                                    <img src="assets/ircadb01_slice69_mask_groundtruth.png" alt="真實腫瘤遮罩，黑底白色小範圍">
+                                    <figcaption>Ground Truth：真實腫瘤遮罩</figcaption>
+                                </figure>
+                                <figure class="real-data-figure">
+                                    <img src="assets/ircadb01_slice69_mask_allblack.png" alt="全黑預測遮罩，完全沒有偵測到任何區域">
+                                    <figcaption>naive 模型的預測：全黑（什麼都不猜）</figcaption>
+                                </figure>
+                            </div>
+                            <p class="data-source-note">資料來源：<a href="https://www.ircad.fr/research-and-development/data-sets/liver-segmentation-3d-ircadb-01/" target="_blank" rel="noopener noreferrer">3D-IRCADb-01</a>（法國 IRCAD 研究中心公開的肝臟腫瘤 CT 資料集）</p>
                         </div>
 
-                        <h4>用數字感受一下這個問題有多誇張</h4>
-                        <p>假設一張 512×512 的影像（共 262,144 個像素）中，腫瘤只佔 200 個像素。如果模型完全沒學到東西，永遠只預測「背景」：</p>
-                        <p style="text-align:center;"><code>pixel accuracy = (262144 - 200) / 262144 ≈ 99.92%</code></p>
-                        <p>看起來像是模型「幾乎完美」，但它連一個像素的腫瘤都沒找到。這正是第 3 課「accuracy 陷阱」的分割版本，只是從「整張圖一個答案」變成了「每個像素一個答案」，問題被放大了非常多倍。</p>
+                        <h4>如果模型完全沒學到東西，結果會長怎樣？</h4>
+                        <p>拿最後一張「全黑」遮罩跟 Ground Truth 比較：這個 naive 模型連一個像素的腫瘤都沒找到，但如果只看 pixel accuracy，依然可以拿到很高的分數（公式 5）：</p>
+                        <div class="formula-box">
+                            <span class="formula-label">公式 5・naive 模型的 pixel accuracy（像素層級估算）</span>
+                            <code>pixel accuracy = (262144 − 200) / 262144 ≈ 99.92%</code>
+                        </div>
+                        <p>看起來像是模型「幾乎完美」，但它連一個像素的腫瘤都沒找到。這正是第 3 課「accuracy 陷阱」的分割版本——只是從「整張圖一個答案」變成「每個像素一個答案」，問題被放大了非常多倍。至於這個「準確率很高但沒用」的矛盾，用真正的 Dice / IoU 算出來到底有多嚴重、又該怎麼算，下一課（第 6 課）會用同一個案例算給你看；而且不只算 naive 全黑遮罩，還會實際訓練一個分割模型，讓你親眼看到 accuracy 和 Dice 何時會兜不起來。</p>
 
-                        <h4>常見解法（下面兩課會繼續深入）</h4>
+                        <h4>常見解法（下一課會繼續深入）</h4>
                         <ul>
                             <li><strong>換一個不怕不平衡的評估指標：</strong>不要只看 pixel accuracy，改看 Dice / IoU（下一課）。</li>
                             <li><strong>Class weighting：</strong>在 loss function 中給少數類別（病灶）更高的權重，讓模型「不敢」隨便忽略它。</li>
@@ -874,22 +1006,16 @@ python precision_recall_f1_demo.py</pre>
                             <li><strong>Focal loss：</strong>降低「模型已經很有把握、很容易分類」的背景像素對 loss 的貢獻，讓模型把心力放在困難樣本（例如病灶邊界）上。</li>
                         </ul>
 
+                        <div class="med-box"><strong>這一課沒有獨立的課後練習：</strong>第 5、6 課的練習合併在第 6 課（Dice Coefficient 與 IoU）一起做——先訓練一個真正的 tumor segmentation 模型，再回頭比較 accuracy、Dice、IoU 這幾個指標的差異。</div>
                         <h4>💻 動手做</h4>
                         <div class="code-panel">
-                            <div class="code-title">📁 tutorial/lessons/05-segmentation-imbalance/segmentation_imbalance_demo.py</div>
+                            <div class="code-title">💻 程式碼 05｜📁 tutorial/lessons/05-segmentation-imbalance/segmentation_imbalance_demo.py</div>
                             <pre>cd tutorial/lessons/05-segmentation-imbalance
 python segmentation_imbalance_demo.py</pre>
-                            <div class="dataset-line">📊 資料集：(A) MNIST 手寫數字二值化當玩具分割任務 (B) numpy 產生的合成影像（128x128 背景中一顆 6x6 的腫瘤）</div>
+                            <div class="dataset-line">📊 資料集：完整 3D-IRCADb-01（20 位病人），照第 6 課的說明下載、轉換好後即可算出真實統計數字</div>
                         </div>
-                        <p>程式會分別算出 MNIST（前景約 12.6%）跟合成腫瘤影像（前景僅 0.22%）在「猜全部背景」下的 pixel accuracy，讓你直接比較兩種不平衡程度差多少。</p>
-
-                        <div class="exercise-box">
-                            <h4>📝 課後練習</h4>
-                            <ol>
-                                <li>把程式中 <code>synthetic_tiny_tumor</code> 的 <code>tumor_size</code> 改成 20，重新計算前景比例與 naive pixel accuracy，病灶變大後這個陷阱有沒有變得比較不明顯？</li>
-                                <li>用你自己的話寫一段話，解釋為什麼「pixel accuracy 很高」不能當作「分割做得好」的證據。</li>
-                            </ol>
-                        </div>
+                        <p>這支程式會掃過整個 3D-IRCADb-01 資料集、上千張切片，算出真實的腫瘤像素比例，以及「永遠只猜背景」時 pixel accuracy 會有多高。還沒下載、轉換資料集也沒關係，程式會印出清楚的指引而不會報錯中斷。</p>
+                        
                     </div>
                 </div>
 
@@ -907,7 +1033,7 @@ python segmentation_imbalance_demo.py</pre>
                             <ul>
                                 <li>Dice 和 IoU 的公式、以及它們之間的數學關係</li>
                                 <li>為什麼這兩個指標天生就對「類別不平衡」比較不敏感</li>
-                                <li>親手訓練一個小模型並實際算出 Dice / IoU</li>
+                                <li>親手訓練一個真正的 tumor segmentation 模型，比較 accuracy / Dice / IoU 三個指標的差異</li>
                             </ul>
                         </div>
 
@@ -917,7 +1043,19 @@ python segmentation_imbalance_demo.py</pre>
                             <li><strong>IoU（Intersection over Union，交併比）</strong>= 兩者重疊的面積 ÷ 兩者合起來覆蓋的總面積</li>
                             <li><strong>Dice Coefficient</strong>= 2 × 重疊面積 ÷（兩者面積相加）</li>
                         </ul>
-                        <p>公式：<code>IoU = |A∩B| / |A∪B|</code>，<code>Dice = 2|A∩B| / (|A|+|B|)</code>。兩者的數值都介於 0（完全沒重疊）到 1（完全重疊）之間，而且有一個固定的換算關係：<code>Dice = 2·IoU / (1+IoU)</code>。因為分子分母都只跟「前景區域」有關，完全不管佔了絕大多數的背景像素預測得對不對，所以不會像 pixel accuracy 一樣被背景灌水。</p>
+                        <p>IoU 與 Dice 的公式如公式 6、7，數值都介於 0（完全沒重疊）到 1（完全重疊）之間，而且有一個固定的換算關係（公式 8）。因為分子分母都只跟「前景區域」有關，完全不管佔了絕大多數的背景像素預測得對不對，所以不會像 pixel accuracy 一樣被背景灌水。</p>
+                        <div class="formula-box">
+                            <span class="formula-label">公式 6・IoU</span>
+                            <code>IoU = |A∩B| / |A∪B|</code>
+                        </div>
+                        <div class="formula-box">
+                            <span class="formula-label">公式 7・Dice Coefficient</span>
+                            <code>Dice = 2|A∩B| / (|A| + |B|)</code>
+                        </div>
+                        <div class="formula-box">
+                            <span class="formula-label">公式 8・Dice 與 IoU 的換算關係</span>
+                            <code>Dice = 2·IoU / (1 + IoU)</code>
+                        </div>
 
                         <h4>圖解</h4>
                         <div class="diagram">
@@ -935,25 +1073,66 @@ python segmentation_imbalance_demo.py</pre>
 
                         <h4>手算範例</h4>
                         <p>Ground truth 面積 16 個像素，Prediction 面積 16 個像素，兩者交集 9 個像素：</p>
-                        <p style="text-align:center;"><code>Dice = 2×9 / (16+16) = 0.5625</code>　　<code>IoU = 9 / (16+16-9) = 0.3913</code></p>
-                        <p>代入關係式驗證：<code>2×0.3913 / (1+0.3913) = 0.5625</code> ✔ 兩個公式互相一致。</p>
+                        <div class="formula-box">
+                            <span class="formula-label">公式 9・手算範例（代入公式 6、7、8 驗證）</span>
+                            <code>Dice = 2×9 / (16+16) = 0.5625</code><br>
+                            <code>IoU = 9 / (16+16−9) = 0.3913</code><br>
+                            <code>2×0.3913 / (1+0.3913) = 0.5625 ✔ 與公式 8 換算一致</code>
+                        </div>
 
                         <div class="med-box"><strong>提醒：</strong>Dice 對重疊區域的變化更敏感，是醫學影像分割競賽（如 BraTS 腦瘤分割）最常用的主指標；IoU（也叫 Jaccard）在一般電腦視覺領域（如 COCO 物件偵測）更常見。訓練時常用「soft Dice」（用機率值而非 0/1 硬遮罩去算）當作可微分的 loss function 直接優化。</div>
 
-                        <h4>💻 動手做</h4>
-                        <div class="code-panel">
-                            <div class="code-title">📁 tutorial/lessons/06-dice-iou/dice_iou_demo.py</div>
-                            <pre>cd tutorial/lessons/06-dice-iou
-python dice_iou_demo.py</pre>
-                            <div class="dataset-line">📊 資料集：MNIST，用固定灰階閾值分割數字筆畫，當作「陽春基準線」</div>
+                        <h4>真正訓練一個 tumor segmentation 模型：在完整資料集上訓練 Attention U-Net</h4>
+                        <p>光看公式還不夠，這一課要你實際訓練一個 <strong>Attention U-Net</strong>，在完整 3D-IRCADb-01（20 位病人）上做 liver + tumor 分割——架構上跟第 17 課的 U-Net 一樣是 encoder-decoder + skip connection，多了一個 <strong>Attention Gate</strong>：在每一次 skip connection 之前，先讓模型用 decoder 目前的語意訊號，去「加權」encoder 傳過來的細節特徵，等於讓模型自己學會「skip connection 該重點看哪裡」，而不是把 encoder 的全部細節照單全收。</p>
+                        <div class="diagram">
+                            <svg viewBox="0 0 620 200" xmlns="http://www.w3.org/2000/svg">
+                                <text x="310" y="20" text-anchor="middle" font-size="12.5" fill="#555" font-weight="700">Attention Gate：skip connection 前先做一次「加權」</text>
+                                <rect x="40" y="60" width="120" height="40" fill="#2563eb" rx="6"/>
+                                <text x="100" y="84" text-anchor="middle" fill="white" font-size="11">Encoder 特徵 x</text>
+                                <rect x="40" y="130" width="120" height="40" fill="#1d4ed8" rx="6"/>
+                                <text x="100" y="154" text-anchor="middle" fill="white" font-size="11">Decoder 訊號 g</text>
+
+                                <rect x="230" y="95" width="140" height="40" fill="#ff9800" rx="6"/>
+                                <text x="300" y="119" text-anchor="middle" fill="white" font-size="11">相加 → ReLU → 1x1 conv</text>
+                                <text x="300" y="150" text-anchor="middle" font-size="10.5" fill="#777">→ Sigmoid 得到權重圖 ψ (0~1)</text>
+
+                                <rect x="440" y="80" width="150" height="40" fill="#4caf50" rx="6"/>
+                                <text x="515" y="104" text-anchor="middle" fill="white" font-size="11">x × ψ</text>
+                                <text x="515" y="135" text-anchor="middle" font-size="10.5" fill="#555">加權後的特徵，</text>
+                                <text x="515" y="150" text-anchor="middle" font-size="10.5" fill="#555">才送進 skip connection</text>
+
+                                <line x1="160" y1="80" x2="230" y2="105" stroke="#999" stroke-width="2"/>
+                                <line x1="160" y1="150" x2="230" y2="125" stroke="#999" stroke-width="2"/>
+                                <line x1="370" y1="115" x2="440" y2="105" stroke="#999" stroke-width="2" marker-end="url(#arrowAtt)"/>
+                                <defs><marker id="arrowAtt" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#999"/></marker></defs>
+                            </svg>
                         </div>
-                        <p>程式會先驗證 Dice/IoU 公式，接著用一個簡單的閾值方法分割 MNIST 數字、算出平均 Dice ≈ 0.95、IoU ≈ 0.91，這組數字會在第 17 課拿來跟真正訓練出來的 U-Net 比較。</p>
+                        <p>訓練程式會在<strong>每個 epoch 結束後</strong>同時算出 accuracy、Dice、IoU；訓練完成後，再跟「完全不訓練、永遠猜沒有腫瘤」的全黑基準線並排比較。</p>
+                        <div class="med-box"><strong>參考結果：</strong>用同樣的架構、在這個真實資料集（20 位病人、2823 張切片）上訓練，作者在 22 個 epoch 內把 tumor Dice 從 0.004 一路訓練到 <strong>0.87</strong>、liver Dice 到 0.91——具體證明了真正訓練出來的模型，跟「全黑基準線」（accuracy 很高、但 Dice 幾乎是 0）完全是不同量級的結果。</div>
+
+                        <h4>💻 動手做（第 5、6 課合併練習）</h4>
+                        <div class="code-panel">
+                            <div class="code-title">💻 程式碼 06｜📁 tutorial/lessons/06-dice-iou/prepare_ircadb_dataset.py + train_attention_unet_ircadb.py</div>
+                            <pre>cd tutorial/lessons/06-dice-iou
+# 1) 下載 3D-IRCADb-01，解壓縮「外層」到 tutorial/data/3Dircadb1/
+#    （裡面的 PATIENT_DICOM.zip / MASKS_DICOM.zip 等內層 zip 不用手動解）
+# 2) 把原始 DICOM 轉換成訓練用切片（會自動解開內層 zip）：
+python prepare_ircadb_dataset.py
+# 3) 訓練 Attention U-Net，訓練完自動印出 accuracy / Dice / IoU 比較表：
+python train_attention_unet_ircadb.py</pre>
+                            <div class="dataset-line">📊 資料集：完整 3D-IRCADb-01（20 位病人），需要自行到 <a href="https://www.ircad.fr/research-and-development/data-sets/liver-segmentation-3d-ircadb-01/" target="_blank" rel="noopener noreferrer">IRCAD 官網</a>免費下載檔案</div>
+                        </div>
+                        <p><code>prepare_ircadb_dataset.py</code> 會自動解開 IRCAD 那層層包起來的內層 zip（<code>PATIENT_DICOM.zip</code>、<code>MASKS_DICOM.zip</code>…），再用第 8 課教過的 HU windowing，把原始 DICOM 轉成訓練用的 2D 切片；<code>train_attention_unet_ircadb.py</code> 訓練一個 liver+tumor 雙通道輸出的 Attention U-Net，<strong>每個 epoch 都印出 accuracy 和 Dice</strong>，訓練結束後自動印出「全黑基準線 vs 訓練好的模型」的 accuracy / Dice / IoU 對照表，並存出訓練曲線圖。這支程式的資料讀取、模型、訓練流程都已經用假資料實際測試過可以正常執行；沒有下載完整資料集的話，執行時會印出清楚的下載指引而不會報錯中斷。</p>
 
                         <div class="exercise-box">
-                            <h4>📝 課後練習</h4>
+                            <h4>📝 課後練習（第 5、6 課合併）</h4>
                             <ol>
-                                <li>把程式中 <code>pred_threshold</code> 從 100 調到 150、200，觀察 Dice/IoU 如何隨著閾值越接近 <code>gt_threshold</code>（128）而上升。</li>
-                                <li>用 <code>dice_score</code> / <code>iou_score</code> 這兩個函式，計算「prediction 完全等於 ground truth」與「prediction 完全沒有交集」兩種極端情況，驗證是否分別得到 1.0 和 0.0。</li>
+                                <li>到 <a href="https://www.ircad.fr/research-and-development/data-sets/liver-segmentation-3d-ircadb-01/" target="_blank" rel="noopener noreferrer">3D-IRCADb-01 官網</a>免費註冊、下載完整資料集，依序執行 <code>prepare_ircadb_dataset.py</code>、<code>train_attention_unet_ircadb.py</code>，完成一次真正的 tumor segmentation 訓練。</li>
+                                <li><strong>accuracy 與 Dice 何時兜不起來 ＋ 指標本身也會騙人：</strong>對照程式最後印出的「全黑基準線 vs Attention U-Net」表格——全黑基準線的 tumor accuracy 高達 0.99、Dice 卻是 0.0，為什麼 accuracy 會這麼高？<em>進階：</em>本課的 Dice 是用「整個驗證集一起累加」（dataset-level）算的；如果改成「每張切片各算一次 Dice 再平均」，全黑基準線的 tumor Dice 會從 0 跳到約 0.6。想想為什麼？（提示：一張「沒有腫瘤」的切片，全黑預測的 Dice 是 <code>0/0</code>，該算成 0 還是 1？）這說明連「指標的聚合方式」都可能製造假象。</li>
+                                <li><strong>為什麼 tumor 遠比 liver 難？</strong>你會看到 liver Dice 爬到約 0.87，tumor Dice 卻卡在約 0.1 上不去。已知 tumor 只占約 <strong>0.29% 的像素</strong>、比 liver 稀有約 17 倍，且四分之一的腫瘤不到 100 個像素。用「類別不平衡 + 小物件」解釋為什麼 tumor 這麼難，以及為什麼「幾乎全猜背景」在 tumor 上仍能拿到 0.99 accuracy。（提示：驗證集的腫瘤其實偏大、也沒被 128px 縮沒，所以主因是模型沒學好 tumor，而不是解析度把它弄丟。）</li>
+                                <li><strong>從 loss 把 tumor 拉上去：</strong><code>DiceBCELoss</code> 裡 <code>tumor_loss</code> 乘了 2.0、liver 沒有，為什麼？把這個權重拿掉重訓，你預期 tumor Dice 變好還是變差？<em>進階：</em>查一下 <strong>Tversky / Focal-Tversky loss</strong>，說明它為什麼比 Dice+BCE 更適合小病灶（提示：它讓「漏抓 FN」的懲罰大於「誤報 FP」）。</li>
+                                <li><strong>從推論／訓練設定把 tumor 拉上去：</strong>目前預測用 <code>model(x) &gt; 0.3</code>。tumor 的機率普遍偏低，試著只把 <em>tumor</em> 的閾值降到 0.15~0.2（liver 維持 0.3）重新評估，tumor Dice 有沒有回升？這對應到 precision／recall 的什麼取捨？再試著把 <code>EPOCHS</code> 調到 40~60、或 <code>IMAGE_SIZE</code> 調回 256，比較哪個改動對 tumor Dice 影響最大、能不能往參考結果的 0.87 靠近。</li>
+                                <li>打開 <code>train_attention_unet_ircadb.py</code> 的 <code>AttentionGate</code> 類別，對照上面的圖解，找出 <code>w_g</code>、<code>w_x</code>、<code>psi</code> 分別對應圖中的哪一個步驟。</li>
                             </ol>
                         </div>
                     </div>
@@ -1019,7 +1198,7 @@ python dice_iou_demo.py</pre>
 
                         <h4>💻 動手做</h4>
                         <div class="code-panel">
-                            <div class="code-title">📁 tutorial/lessons/07-segmentation-types/segmentation_types_demo.py</div>
+                            <div class="code-title">💻 程式碼 07｜📁 tutorial/lessons/07-segmentation-types/segmentation_types_demo.py</div>
                             <pre>cd tutorial/lessons/07-segmentation-types
 python segmentation_types_demo.py</pre>
                             <div class="dataset-line">📊 資料：用 numpy 生成 5 顆大小不一、有些相鄰的合成「細胞」，模擬病理切片細胞計數的情境</div>
@@ -1117,7 +1296,7 @@ python segmentation_types_demo.py</pre>
 
                         <h4>💻 動手做</h4>
                         <div class="code-panel">
-                            <div class="code-title">📁 tutorial/lessons/08-medical-image-format/dicom_windowing_demo.py</div>
+                            <div class="code-title">💻 程式碼 08｜📁 tutorial/lessons/08-medical-image-format/dicom_windowing_demo.py</div>
                             <pre>cd tutorial/lessons/08-medical-image-format
 python dicom_windowing_demo.py</pre>
                             <div class="dataset-line">📊 資料：pydicom 套件內建的真實 CT DICOM 範例檔（CT_small.dcm），pip install pydicom 就會一起裝好，免額外下載</div>
@@ -1195,7 +1374,7 @@ python dicom_windowing_demo.py</pre>
 
                         <h4>💻 動手做</h4>
                         <div class="code-panel">
-                            <div class="code-title">📁 tutorial/lessons/09-data-leakage-patient-split/patient_group_split_demo.py</div>
+                            <div class="code-title">💻 程式碼 09｜📁 tutorial/lessons/09-data-leakage-patient-split/patient_group_split_demo.py</div>
                             <pre>cd tutorial/lessons/09-data-leakage-patient-split
 python patient_group_split_demo.py</pre>
                             <div class="dataset-line">📊 資料集：Breast Cancer Wisconsin（sklearn 內建），複製每位病人 3 次、加極小雜訊模擬「近乎重複的相鄰切片」</div>
@@ -1265,13 +1444,17 @@ python patient_group_split_demo.py</pre>
                         </div>
 
                         <h4>為什麼 ROC-AUC 在不平衡資料下可能失真</h4>
-                        <p>ROC 的 x 軸是 <code>FPR = FP/(FP+TN)</code>，分母是「所有真正的陰性樣本」。當陰性樣本數量龐大時（例如篩檢資料中陰性佔 98%），就算 FP 的數量不少，除以龐大的 TN 之後 FPR 還是會很小，於是 ROC 曲線看起來「貼著左上角」、AUC 很漂亮。但 <strong>PR curve</strong> 的 x 軸是 Recall、y 軸是 Precision，Precision 的分母是「所有被模型判斷為陽性的樣本」，這個數字對「模型到底誤報了多少」非常敏感，因此在極度不平衡資料下，PR-AUC 才是更誠實的指標。</p>
+                        <p>ROC 的 x 軸 FPR 定義如公式 10，分母是「所有真正的陰性樣本」。當陰性樣本數量龐大時（例如篩檢資料中陰性佔 98%），就算 FP 的數量不少，除以龐大的 TN 之後 FPR 還是會很小，於是 ROC 曲線看起來「貼著左上角」、AUC 很漂亮。但 <strong>PR curve</strong> 的 x 軸是 Recall、y 軸是 Precision，Precision 的分母是「所有被模型判斷為陽性的樣本」，這個數字對「模型到底誤報了多少」非常敏感，因此在極度不平衡資料下，PR-AUC 才是更誠實的指標。</p>
+                        <div class="formula-box">
+                            <span class="formula-label">公式 10・False Positive Rate</span>
+                            <code>FPR = FP / (FP + TN)</code>
+                        </div>
 
                         <div class="med-box"><strong>醫學影像情境：</strong>報告篩檢型 AI 系統的效能時，除了 sensitivity/specificity/ROC-AUC，越來越多期刊會要求同時附上 PR-AUC，尤其當陽性盛行率（prevalence）很低的疾病篩檢任務更是如此。</div>
 
                         <h4>💻 動手做</h4>
                         <div class="code-panel">
-                            <div class="code-title">📁 tutorial/lessons/10-sensitivity-specificity-roc/roc_auc_demo.py</div>
+                            <div class="code-title">💻 程式碼 10｜📁 tutorial/lessons/10-sensitivity-specificity-roc/roc_auc_demo.py</div>
                             <pre>cd tutorial/lessons/10-sensitivity-specificity-roc
 python roc_auc_demo.py</pre>
                             <div class="dataset-line">📊 資料集：MNIST，沿用第 3、4 課「是不是 0」的極端不平衡設定（陽性僅 2%）</div>
@@ -1292,11 +1475,23 @@ python roc_auc_demo.py</pre>
 
         <div id="classicml" class="content-section">
             <h2 class="section-title">📊 傳統機器學習模型</h2>
-            <p class="section-sub">第 11-15 課：從線性模型到樹模型，機器學習的基本工具箱</p>
+            <p class="section-sub">第 11-15 課：從線性模型到樹模型，機器學習的基本工具箱（第 12、14、15 課用同一份 COVID-19 資料集實作回歸）</p>
             <div class="toolbar">
                 <button onclick="toggleAll('classicml', true)">展開全部</button>
                 <button onclick="toggleAll('classicml', false)">收合全部</button>
             </div>
+
+            <div class="dataset-intro-box">
+                <h3>📦 回歸主線共用資料集：COVID-19 Cases Prediction（Delphi group）</h3>
+                <p>這一章的<strong>第 12、14、15 課</strong>共用一份真實的 COVID-19 資料集當回歸範例，來自美國 CMU <strong>Delphi research group</strong> 透過大規模網路問卷（Facebook / COVIDcast survey）蒐集的社群症狀與行為調查，也是台大李宏毅老師 <a href="https://github.com/virginiakm1988/ML2022-Spring/tree/main/HW01" target="_blank" rel="noopener noreferrer">ML2022 Spring 作業 HW01</a> 的指定題目。（第 11 課的分類與第 13 課的分群因為任務性質不同，各自保留更適合示範的資料集。）</p>
+                <ul>
+                    <li><strong>任務：</strong>用某一州「連續 5 天」的問卷指標，預測第 5 天的 <code>tested_positive</code>（該州當天回報的 COVID 陽性率，0～100 的連續值）——本質上是一個<strong>回歸</strong>問題。</li>
+                    <li><strong>特徵（共 116 個）：</strong>37 個美國州別（one-hot 編碼）＋ 連續 5 天、每天 16 項指標，包含症狀（cli / ili 類流感比例）、社群感染感知（hh_cmnty_cli…）、防疫行為（wearing_mask 戴口罩、restaurant 外出用餐、large_event 大型聚會…）、心理狀態（anxious 焦慮、depressed 憂鬱），以及當天的 tested_positive 陽性率。</li>
+                    <li><strong>資料量：</strong>訓練集 2699 筆、測試集 1078 筆（測試集不含答案，僅供預測），每一筆代表「某一州的某一天」。</li>
+                </ul>
+                <p>它同時具備<strong>連續目標、上百個特徵、特徵之間高度相關</strong>這幾個特性，很適合用同一份資料一次示範回歸、特徵篩選、距離模型、樹模型等傳統機器學習工具。<strong>下載：</strong>到上面的 GitHub HW01 頁面取得 <code>covid.train.csv</code>、<code>covid.test.csv</code>，放到 <code>tutorial/data/covid/</code> 即可；沒放的話每支程式都會印出這段下載指引而不會報錯中斷。</p>
+            </div>
+
             <div class="lesson-list">
                 <div class="lesson-item">
                     <div class="lesson-header" onclick="toggleLesson(this)">
@@ -1317,7 +1512,15 @@ python roc_auc_demo.py</pre>
                         </div>
 
                         <h4>白話版</h4>
-                        <p>雖然名字有「Regression（迴歸）」，Logistic Regression 其實是拿來做「分類」的模型。作法是：先把每個特徵乘上一個權重、加總起來（跟一般線性迴歸一樣的計算 <code>z = w·x + b</code>），再把這個值丟進一個叫 <strong>sigmoid</strong 的函數，把任何實數壓縮到 0~1 之間，當作「屬於陽性類別」的機率。</p>
+                        <p>雖然名字有「Regression（迴歸）」，Logistic Regression 其實是拿來做「分類」的模型。作法是：先把每個特徵乘上一個權重、加總起來（跟一般線性迴歸一樣的計算，見公式 11），再把這個值丟進一個叫 <strong>sigmoid</strong> 的函數（公式 12），把任何實數壓縮到 0~1 之間，當作「屬於陽性類別」的機率。</p>
+                        <div class="formula-box">
+                            <span class="formula-label">公式 11・線性組合</span>
+                            <code>z = w·x + b</code>
+                        </div>
+                        <div class="formula-box">
+                            <span class="formula-label">公式 12・Sigmoid 函數</span>
+                            <code>σ(z) = 1 / (1 + e⁻ᶻ)</code>
+                        </div>
                         <p>訓練的目標，是找出一組權重 w，讓模型對「真實答案是陽性」的樣本，盡量輸出接近 1 的機率；對「真實答案是陰性」的樣本，盡量輸出接近 0。這個目標函數叫 <strong>cross-entropy loss（交叉熵損失）</strong>。</p>
 
                         <h4>圖解：Sigmoid 函數</h4>
@@ -1344,7 +1547,7 @@ python roc_auc_demo.py</pre>
 
                         <h4>💻 動手做</h4>
                         <div class="code-panel">
-                            <div class="code-title">📁 tutorial/lessons/11-logistic-regression/logistic_regression_demo.py</div>
+                            <div class="code-title">💻 程式碼 11｜📁 tutorial/lessons/11-logistic-regression/logistic_regression_demo.py</div>
                             <pre>cd tutorial/lessons/11-logistic-regression
 python logistic_regression_demo.py</pre>
                             <div class="dataset-line">📊 資料集：Breast Cancer Wisconsin (Diagnostic) — sklearn 內建，免下載</div>
@@ -1401,24 +1604,24 @@ python logistic_regression_demo.py</pre>
                         </div>
 
                         <h4>兩個一定要注意的陷阱</h4>
-                        <p><strong>(1) 一定要做 feature scaling：</strong>KNN 靠「距離」判斷誰是鄰居。如果某個特徵的數值範圍特別大（例如腫瘤面積動輒上千，但平滑度只有 0 點多），距離幾乎完全被那個大範圍的特徵主宰，其他特徵形同虛設。做完 <code>StandardScaler</code> 之後，各特徵才會在同一個尺度上被公平比較。</p>
+                        <p><strong>(1) feature scaling 很關鍵，但不是萬靈丹：</strong>KNN 靠「距離」判斷誰是鄰居。如果各特徵的數值範圍差很多（COVID 裡州別是 0/1，問卷指標卻是 0~100），沒有 scaling 時距離幾乎被大範圍的特徵主宰。做完 <code>StandardScaler</code> 後各特徵才會在同一個尺度上被比較——但要注意『同尺度』只有在特徵<strong>同樣重要</strong>時才是好事：如果多數特徵其實是冗餘或雜訊，把它們全部拉到同等權重反而可能稀釋掉少數真正有用的特徵（動手做會看到這個有趣的反例）。</p>
                         <p><strong>(2) K 值的 bias-variance trade-off：</strong>K 太小（如 K=1）容易被雜訊樣本影響，只要剛好有一個標錯的鄰居就會誤判（high variance）；K 太大則會把太多不相關、離得很遠的樣本也算進來，決策邊界過度平滑，容易忽略局部的細微差異（high bias / underfit）。</p>
                         <p><strong>(3) 維度詛咒（Curse of Dimensionality）：</strong>特徵維度越高，「最近的鄰居」跟「最遠的鄰居」的距離會越來越接近 —— 距離這個概念本身失去鑑別力。這也是為什麼 KNN 不適合直接用在放射組學這種動輒上百個特徵的資料上，通常要先做降維或特徵篩選（見第 14、15 課）。</p>
 
                         <h4>💻 動手做</h4>
                         <div class="code-panel">
-                            <div class="code-title">📁 tutorial/lessons/12-knn/knn_demo.py</div>
+                            <div class="code-title">💻 程式碼 12｜📁 tutorial/lessons/12-knn/knn_demo.py</div>
                             <pre>cd tutorial/lessons/12-knn
 python knn_demo.py</pre>
-                            <div class="dataset-line">📊 資料集：Breast Cancer Wisconsin (Diagnostic) — sklearn 內建，免下載</div>
+                            <div class="dataset-line">📊 資料集：COVID-19 Cases Prediction（Delphi group / ML2022 HW01），用 KNeighborsRegressor 預測陽性率</div>
                         </div>
-                        <p>程式會分別驗證這三個重點：scaling 前後準確率差了 3.7 個百分點、K 值掃描找出最佳 K、以及一個小型合成實驗，具體算出不同維度下「最近/最遠距離比值」如何趨近於 1。</p>
+                        <p>程式分別驗證這三個重點：<strong>(1)</strong> 比較 scaling 前後的 R²——在這份資料上 scaling 後 R² 反而<strong>略降</strong>（約 0.86 → 0.78），因為 116 個特徵裡真正有預測力的只有少數「最近幾天陽性率」，naive 地把冗餘特徵也拉到同等權重反而稀釋了訊號（這帶出「scaling 要搭配特徵篩選」的觀念）；<strong>(2)</strong> K 值掃描找出最佳 K（約 K=9）；<strong>(3)</strong> 一個小型合成實驗，具體算出不同維度下「最近/最遠距離比值」如何趨近於 1。</p>
 
                         <div class="exercise-box">
                             <h4>📝 課後練習</h4>
                             <ol>
-                                <li>執行程式後，對照 <code>scaling_matters()</code> 的結果，用自己的話解釋為什麼沒有 scaling 時 KNN 準確率會下降。</li>
-                                <li>在高維度（例如 radiomics 上百個特徵）資料上直接用 KNN，可能遇到什麼問題？可以怎麼緩解（提示：先用第 14 課 Random Forest 的 feature importance，或第 15 課的 Lasso 做特徵篩選再用 KNN）？</li>
+                                <li>執行程式後，對照 <code>scaling_matters()</code> 的結果：這份資料 scaling 後 R² 反而略降。用自己的話解釋——什麼情況下 scaling 幫得上忙、什麼情況下反而稀釋了少數真正有用的特徵？</li>
+                                <li>在 116 個特徵上直接用 KNN 會遇到「維度詛咒」，可能怎麼緩解（提示：先用第 14 課 Random Forest 的 feature importance，或第 15 課的 Lasso 做特徵篩選，只留最重要的幾個特徵再跑 KNN）？動手比較篩選前後的 R²。</li>
                             </ol>
                         </div>
                     </div>
@@ -1476,7 +1679,7 @@ python knn_demo.py</pre>
 
                         <h4>💻 動手做</h4>
                         <div class="code-panel">
-                            <div class="code-title">📁 tutorial/lessons/13-kmeans/kmeans_demo.py</div>
+                            <div class="code-title">💻 程式碼 13｜📁 tutorial/lessons/13-kmeans/kmeans_demo.py</div>
                             <pre>cd tutorial/lessons/13-kmeans
 python kmeans_demo.py</pre>
                             <div class="dataset-line">📊 資料集：Digits（sklearn 內建，1797 張 8x8 手寫數字小圖）</div>
@@ -1524,22 +1727,22 @@ python kmeans_demo.py</pre>
                             <svg viewBox="0 0 560 220" xmlns="http://www.w3.org/2000/svg">
                                 <text x="90" y="25" text-anchor="middle" font-size="11" fill="#555">Tree 1</text>
                                 <path d="M90,35 L60,70 M90,35 L120,70 M60,70 L45,95 M60,70 L75,95" stroke="#3b82f6" stroke-width="2" fill="none"/>
-                                <text x="90" y="115" text-anchor="middle" font-size="11" fill="#2563eb" font-weight="700">預測: 良性</text>
+                                <text x="90" y="115" text-anchor="middle" font-size="11" fill="#2563eb" font-weight="700">預測: 7.8%</text>
 
                                 <text x="270" y="25" text-anchor="middle" font-size="11" fill="#555">Tree 2</text>
                                 <path d="M270,35 L240,70 M270,35 L300,70 M300,70 L285,95 M300,70 L315,95" stroke="#3b82f6" stroke-width="2" fill="none"/>
-                                <text x="270" y="115" text-anchor="middle" font-size="11" fill="#2563eb" font-weight="700">預測: 良性</text>
+                                <text x="270" y="115" text-anchor="middle" font-size="11" fill="#2563eb" font-weight="700">預測: 8.3%</text>
 
                                 <text x="450" y="25" text-anchor="middle" font-size="11" fill="#555">Tree 200</text>
                                 <path d="M450,35 L420,70 M450,35 L480,70 M420,70 L405,95 M420,70 L435,95" stroke="#3b82f6" stroke-width="2" fill="none"/>
-                                <text x="450" y="115" text-anchor="middle" font-size="11" fill="#c62828" font-weight="700">預測: 惡性</text>
+                                <text x="450" y="115" text-anchor="middle" font-size="11" fill="#c62828" font-weight="700">預測: 9.1%</text>
 
                                 <text x="270" y="150" text-anchor="middle" font-size="16" fill="#999">⋯ ⋯ ⋯</text>
                                 <line x1="90" y1="120" x2="270" y2="170" stroke="#ccc"/>
                                 <line x1="270" y1="120" x2="270" y2="170" stroke="#ccc"/>
                                 <line x1="450" y1="120" x2="270" y2="170" stroke="#ccc"/>
-                                <rect x="190" y="175" width="160" height="35" fill="#4caf50" rx="6"/>
-                                <text x="270" y="197" text-anchor="middle" fill="white" font-size="12" font-weight="700">多數投票 → 良性</text>
+                                <rect x="190" y="175" width="180" height="35" fill="#4caf50" rx="6"/>
+                                <text x="280" y="197" text-anchor="middle" fill="white" font-size="12" font-weight="700">取平均 → 8.4% 陽性率</text>
                             </svg>
                         </div>
 
@@ -1550,18 +1753,18 @@ python kmeans_demo.py</pre>
 
                         <h4>💻 動手做</h4>
                         <div class="code-panel">
-                            <div class="code-title">📁 tutorial/lessons/14-random-forest/random_forest_demo.py</div>
+                            <div class="code-title">💻 程式碼 14｜📁 tutorial/lessons/14-random-forest/random_forest_demo.py</div>
                             <pre>cd tutorial/lessons/14-random-forest
 python random_forest_demo.py</pre>
-                            <div class="dataset-line">📊 資料集：Breast Cancer Wisconsin (Diagnostic) — sklearn 內建，免下載</div>
+                            <div class="dataset-line">📊 資料集：COVID-19 Cases Prediction（Delphi group / ML2022 HW01），用 RandomForestRegressor 預測陽性率</div>
                         </div>
-                        <p>程式比較單棵 Decision Tree（91.7%）、Random Forest（95.8%）、Logistic Regression（98.1%）的 5-fold CV 準確率，並印出 feature importance 排名前 10 的特徵。</p>
+                        <p>程式用 5-fold CV 的 R²（越接近 1 越好）比較單棵 Decision Tree（約 0.92）、Random Forest（約 0.96）、Linear Regression（約 0.97）：你會看到單棵樹的 R² 最不穩、標準差最大，Random Forest 靠 bagging 明顯更穩定。接著印出 feature importance 排名前 10 的特徵——幾乎被「最近幾天的 tested_positive」佔滿（重要性 &gt;0.97），非常符合直覺：預測明天的陽性率，最有用的線索就是最近幾天的陽性率。</p>
 
                         <div class="exercise-box">
                             <h4>📝 課後練習</h4>
                             <ol>
-                                <li>對照程式印出的平均準確率，解釋 bagging 如何幫助降低模型 variance；也可以試著把 <code>DecisionTreeClassifier(max_depth=3)</code> 加上深度限制，觀察它的表現是否會比較接近 Random Forest。</li>
-                                <li>只取 feature importance 排名前 5 的特徵重新訓練 Random Forest，比較準確率跟用全部 30 個特徵時差多少？這說明了什麼？</li>
+                                <li>對照程式印出的 R² 平均與標準差，解釋 bagging 如何幫助降低模型 variance；也可以試著把 <code>DecisionTreeRegressor(max_depth=5)</code> 加上深度限制，觀察它的表現是否會比較接近 Random Forest。</li>
+                                <li>只取 feature importance 排名前 5 的特徵重新訓練 Random Forest，比較 R² 跟用全部 116 個特徵時差多少？這說明了什麼？</li>
                             </ol>
                         </div>
                     </div>
@@ -1586,11 +1789,19 @@ python random_forest_demo.py</pre>
                         </div>
 
                         <h4>白話版</h4>
-                        <p>當特徵數量很多、樣本數量卻很少時（例如放射組學常見的「300 個特徵、只有 80 位病人」），一般的線性迴歸幾乎一定會 overfitting：模型有太多自由度可以「硬背」訓練資料裡的雜訊，在 train 上表現完美，換到沒看過的資料立刻崩盤。<strong>正則化</strong>的做法，是在損失函數裡加一個「懲罰項」，限制係數不能任意變大，逼模型變得比較保守、比較不容易背答案：</p>
+                        <p>當特徵數量很多、又彼此高度相關時（例如 COVID 資料的 116 個特徵裡，連續 5 天的同一種指標幾乎一路連動），一般的線性迴歸容易 overfitting、而且係數會變得不穩定：模型有太多幾乎重複的自由度，會在這些相關特徵之間亂分配權重，換到沒看過的資料就不可靠，也很難解讀。<strong>正則化</strong>的做法，是在損失函數裡加一個「懲罰項」，限制係數不能任意變大，逼模型變得比較保守、比較不容易背答案：</p>
                         <ul>
-                            <li><strong>Ridge (L2)：</strong>懲罰項是「係數的平方和」，效果是讓所有係數整體「縮小」，但不會真的變成 0 —— 每個特徵多少都還保留一點影響力。</li>
-                            <li><strong>Lasso (L1)：</strong>懲罰項是「係數的絕對值和」，數學上的特性會讓一部分不重要特徵的係數直接變成<strong>剛好等於 0</strong>，等於自動幫你做了特徵篩選（sparse solution）。</li>
+                            <li><strong>Ridge (L2)：</strong>懲罰項是「係數的平方和」（公式 13），效果是讓所有係數整體「縮小」，但不會真的變成 0 —— 每個特徵多少都還保留一點影響力。</li>
+                            <li><strong>Lasso (L1)：</strong>懲罰項是「係數的絕對值和」（公式 14），數學上的特性會讓一部分不重要特徵的係數直接變成<strong>剛好等於 0</strong>，等於自動幫你做了特徵篩選（sparse solution）。</li>
                         </ul>
+                        <div class="formula-box">
+                            <span class="formula-label">公式 13・Ridge (L2) 損失函數</span>
+                            <code>Loss = Σ(yᵢ − ŷᵢ)² + α · Σwⱼ²</code>
+                        </div>
+                        <div class="formula-box">
+                            <span class="formula-label">公式 14・Lasso (L1) 損失函數</span>
+                            <code>Loss = Σ(yᵢ − ŷᵢ)² + α · Σ|wⱼ|</code>
+                        </div>
 
                         <h4>圖解</h4>
                         <div class="diagram">
@@ -1630,23 +1841,24 @@ python random_forest_demo.py</pre>
                         </div>
 
                         <h4>用真實數字感受差異有多大</h4>
-                        <p>模擬「80 位病人、300 個特徵，其中只有 15 個真正有用」的情境：一般 Linear Regression 在 train 上幾乎完美（R²≈1.0），但 test R² 是 <strong>-0.12</strong>（比亂猜還差！）；Ridge 也好不到哪去（test R² ≈ -0.10），因為它只會「整體縮小」，沒辦法把 285 個雜訊特徵真正排除；而 Lasso 把非零係數壓到只剩 50 個，test R² 直接跳到 <strong>0.99</strong>。這就是為什麼特徵數遠大於樣本數時，Lasso（或 Elastic Net）常是首選。</p>
+                        <p>在 COVID 資料上（2699 筆、116 個特徵）跑三個模型：一般 Linear Regression 與 Ridge 都用滿全部 116 個特徵，val R² 約 <strong>0.975</strong>；Lasso（L1）則把非零係數壓到只剩 <strong>4 個</strong>——幾乎只靠「第 4 天的陽性率」加少數幾個欄位，val R² 依然有 <strong>0.973</strong>，幾乎沒掉。換句話說，116 個特徵裡絕大多數其實是冗餘的，Lasso 幫你自動篩掉，換來一個又準又好解讀的精簡模型。這就是 L1 正則化最實用的價值：<strong>自動特徵篩選</strong>。</p>
 
                         <div class="med-box"><strong>醫學影像情境：</strong>Radiomics 分析是正則化最典型的應用場景——特徵數常常是病人數的好幾倍，Lasso 常被用來從幾百個特徵中篩出一小組真正跟預後或診斷相關的特徵，再拿去做後續建模或臨床解讀。</div>
 
                         <h4>💻 動手做</h4>
                         <div class="code-panel">
-                            <div class="code-title">📁 tutorial/lessons/15-ridge-lasso/ridge_lasso_demo.py</div>
+                            <div class="code-title">💻 程式碼 15｜📁 tutorial/lessons/15-ridge-lasso/ridge_lasso_demo.py</div>
                             <pre>cd tutorial/lessons/15-ridge-lasso
 python ridge_lasso_demo.py</pre>
-                            <div class="dataset-line">📊 資料：sklearn <code>make_regression</code> 產生的合成資料，模擬「300 特徵、80 病人、僅 15 個真正有用」的 radiomics 情境</div>
+                            <div class="dataset-line">📊 資料集：COVID-19 Cases Prediction（Delphi group / ML2022 HW01），116 個特徵的真實回歸</div>
                         </div>
 
                         <div class="exercise-box">
                             <h4>📝 課後練習</h4>
                             <ol>
-                                <li>對照程式印出的「非零係數個數」，說明 L1 與 L2 正則化在「特徵篩選」這一點的關鍵差異。</li>
-                                <li>調整 Lasso 的 <code>alpha</code>（例如 0.1、1.0、5.0），觀察非零係數個數與 test R² 如何隨 alpha 變化，alpha 太大或太小分別會發生什麼問題？</li>
+                                <li>對照程式印出的「非零係數個數」，說明 L1 (Lasso) 與 L2 (Ridge) 在「特徵篩選」這一點的關鍵差異：為什麼 Ridge 幾乎不會把係數壓到剛好 0？</li>
+                                <li>調整 Lasso 的 <code>alpha</code>（例如 0.01、0.1、1.0），觀察非零係數個數與 val R² 如何隨 alpha 變化，alpha 太大或太小分別會發生什麼問題？</li>
+                                <li>只用 Lasso 篩出來的那幾個特徵重新訓練一個一般 Linear Regression，val R² 掉了多少？這說明 116 個特徵裡有多少其實是冗餘的？</li>
                             </ol>
                         </div>
                     </div>
@@ -1717,7 +1929,7 @@ python ridge_lasso_demo.py</pre>
 
                         <h4>💻 動手做</h4>
                         <div class="code-panel">
-                            <div class="code-title">📁 tutorial/lessons/16-mlp/mlp_demo.py</div>
+                            <div class="code-title">💻 程式碼 16｜📁 tutorial/lessons/16-mlp/mlp_demo.py</div>
                             <pre>cd tutorial/lessons/16-mlp
 python mlp_demo.py</pre>
                             <div class="dataset-line">📊 資料集：MNIST（torchvision 自動下載），PyTorch 訓練，若有 GPU 會自動使用</div>
@@ -1866,13 +2078,13 @@ python mlp_demo.py</pre>
 
                         <h4>💻 動手做</h4>
                         <div class="code-panel">
-                            <div class="code-title">📁 tutorial/lessons/17-cnn-unet/</div>
+                            <div class="code-title">💻 程式碼 17｜📁 tutorial/lessons/17-cnn-unet/</div>
                             <pre>cd tutorial/lessons/17-cnn-unet
 python cnn_mnist_demo.py   # CNN vs MLP 分類比較
 python unet_demo.py        # 真的訓練一個 U-Net 做分割</pre>
-                            <div class="dataset-line">📊 資料集：MNIST（cnn_mnist_demo.py 做十分類；unet_demo.py 沿用第 5、6 課「筆畫=前景」的分割任務）</div>
+                            <div class="dataset-line">📊 資料集：MNIST（cnn_mnist_demo.py 做十分類；unet_demo.py 把「筆畫=前景」當作分割任務，訓練一個真正的 U-Net）</div>
                         </div>
-                        <p><code>unet_demo.py</code> 訓練出來的 Dice/IoU（0.962 / 0.928）會直接和第 6 課「陽春閾值基準線」（0.952 / 0.910）比較，你會看到真正訓練出來的模型確實勝過陽春方法，並存出實際的分割結果對照圖。</p>
+                        <p><code>unet_demo.py</code> 會先算出一個「陽春閾值基準線」當對照，再訓練 U-Net 並比較兩者的 Dice/IoU（U-Net 約 0.962 / 0.928，陽春閾值約 0.952 / 0.910），你會看到真正訓練出來的模型確實勝過陽春方法，並存出實際的分割結果對照圖。</p>
 
                         <div class="exercise-box">
                             <h4>📝 課後練習</h4>
@@ -1938,7 +2150,7 @@ python unet_demo.py        # 真的訓練一個 U-Net 做分割</pre>
 
                         <h4>💻 動手做</h4>
                         <div class="code-panel">
-                            <div class="code-title">📁 tutorial/lessons/18-lstm-gru/lstm_gru_demo.py</div>
+                            <div class="code-title">💻 程式碼 18｜📁 tutorial/lessons/18-lstm-gru/lstm_gru_demo.py</div>
                             <pre>cd tutorial/lessons/18-lstm-gru
 python lstm_gru_demo.py</pre>
                             <div class="dataset-line">📊 資料集：MNIST，把每張 28x28 圖片橫切成 28 個時間步，當作序列分類任務餵給 RNN（教學上常見的 RNN demo 手法）</div>
@@ -1991,7 +2203,11 @@ python lstm_gru_demo.py</pre>
                             <li><strong>Key（我有什麼）：</strong>代表「每個位置本身能提供什麼樣的資訊」，用來跟 Query 做比對。</li>
                             <li><strong>Value（實際內容）：</strong>代表「如果決定要關注這個位置，實際要拿走的內容是什麼」。</li>
                         </ul>
-                        <p>算法：把 Query 跟每個位置的 Key 做內積，數值越大代表「越相關」，再經過 softmax 把這些相關程度變成一組加總為 1 的權重，最後用這組權重對所有位置的 Value 做加權平均，就是這個位置的 attention 輸出。這整個過程如果 Query/Key/Value 都來自「同一個序列自己」，就叫 <strong>self-attention</strong>；如果同時用多組不同的 Query/Key/Value 投影（讓模型同時關注不同種類的關係），就叫 <strong>multi-head attention</strong>。</p>
+                        <p>算法：把 Query 跟每個位置的 Key 做內積，數值越大代表「越相關」，再經過 softmax 把這些相關程度變成一組加總為 1 的權重，最後用這組權重對所有位置的 Value 做加權平均，就是這個位置的 attention 輸出（公式 15）。這整個過程如果 Query/Key/Value 都來自「同一個序列自己」，就叫 <strong>self-attention</strong>；如果同時用多組不同的 Query/Key/Value 投影（讓模型同時關注不同種類的關係），就叫 <strong>multi-head attention</strong>。</p>
+                        <div class="formula-box">
+                            <span class="formula-label">公式 15・Scaled Dot-Product Attention</span>
+                            <code>Attention(Q, K, V) = softmax(QKᵀ / √d) · V</code>
+                        </div>
 
                         <h4>圖解</h4>
                         <div class="diagram">
@@ -2023,7 +2239,7 @@ python lstm_gru_demo.py</pre>
 
                         <h4>💻 動手做</h4>
                         <div class="code-panel">
-                            <div class="code-title">📁 tutorial/lessons/19-attention-transformer/attention_transformer_demo.py</div>
+                            <div class="code-title">💻 程式碼 19｜📁 tutorial/lessons/19-attention-transformer/attention_transformer_demo.py</div>
                             <pre>cd tutorial/lessons/19-attention-transformer
 python attention_transformer_demo.py</pre>
                             <div class="dataset-line">📊 資料集：MNIST，沿用第 18 課「把圖片橫切成 28 個時間步」的序列設定，方便直接跟 LSTM/GRU 比較</div>
@@ -2099,7 +2315,7 @@ python attention_transformer_demo.py</pre>
 
                         <h4>💻 動手做</h4>
                         <div class="code-panel">
-                            <div class="code-title">📁 tutorial/lessons/20-vit-gradcam/</div>
+                            <div class="code-title">💻 程式碼 20｜📁 tutorial/lessons/20-vit-gradcam/</div>
                             <pre>cd tutorial/lessons/20-vit-gradcam
 python vit_cifar_demo.py   # CNN vs 從頭訓練的 ViT，比較準確率
 python gradcam_demo.py     # 訓練 CNN 並畫出 Grad-CAM 熱力圖</pre>
@@ -2188,7 +2404,7 @@ python gradcam_demo.py     # 訓練 CNN 並畫出 Grad-CAM 熱力圖</pre>
 
                         <h4>💻 動手做</h4>
                         <div class="code-panel">
-                            <div class="code-title">📁 tutorial/lessons/21-transfer-learning/transfer_learning_demo.py</div>
+                            <div class="code-title">💻 程式碼 21｜📁 tutorial/lessons/21-transfer-learning/transfer_learning_demo.py</div>
                             <pre>cd tutorial/lessons/21-transfer-learning
 python transfer_learning_demo.py</pre>
                             <div class="dataset-line">📊 資料集：CIFAR-10（torchvision 自動下載）+ torchvision 內建 ImageNet 預訓練 ResNet18（<code>models.ResNet18_Weights.IMAGENET1K_V1</code>，自動下載約 45MB）</div>
@@ -2277,7 +2493,7 @@ python transfer_learning_demo.py</pre>
 
                         <h4>💻 動手做</h4>
                         <div class="code-panel">
-                            <div class="code-title">📁 tutorial/lessons/22-data-augmentation-medical/augmentation_demo.py</div>
+                            <div class="code-title">💻 程式碼 22｜📁 tutorial/lessons/22-data-augmentation-medical/augmentation_demo.py</div>
                             <pre>cd tutorial/lessons/22-data-augmentation-medical
 python augmentation_demo.py</pre>
                             <div class="dataset-line">📊 資料：(A) pydicom 內建的真實 CT 範例（沿用第 8 課）示範視覺效果 (B) MNIST 只用 300 張訓練圖，量化 augmentation 對泛化的實際幫助</div>

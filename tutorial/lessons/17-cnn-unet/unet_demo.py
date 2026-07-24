@@ -1,10 +1,10 @@
 """
 第 17 課 (2/2)：U-Net —— 醫學影像分割的標配架構
-資料集：MNIST（沿用第 5、6 課「筆畫 = 前景」的玩具分割任務）
+資料集：MNIST，把「筆畫 = 前景」當作玩具分割任務
 
 這裡訓練一個真正的迷你 U-Net（encoder-decoder + skip connection）來做
-『分割』（每個像素判斷是不是筆畫），並用第 6 課定義的 dice_score /
-iou_score 算出來的分數，直接跟第 6 課『陽春閾值基準線』比較。
+『分割』（每個像素判斷是不是筆畫），並用 dice_score / iou_score（公式跟
+第 6 課相同）算出分數，跟同一組資料上的『陽春閾值基準線』比較。
 """
 
 import sys
@@ -30,7 +30,7 @@ OUTPUT_DIR = Path(__file__).resolve().parents[2] / "outputs"
 OUTPUT_DIR.mkdir(exist_ok=True)
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-GT_THRESHOLD = 128  # 和第 6 課一致：像素值 > 128 視為前景 (筆畫)
+GT_THRESHOLD = 128  # 像素值 > 128 視為前景 (筆畫)
 
 
 def dice_score(pred_mask, gt_mask, eps=1e-7):
@@ -121,7 +121,7 @@ def main():
     X_train, Y_train, X_test, Y_test = load_mnist_masks()
     print(f"訓練集: {len(X_train)} 張，測試集: {len(X_test)} 張\n")
 
-    print("== 陽春基準線（第 6 課的固定閾值方法，這裡重新算一次當對照）==")
+    print("== 陽春基準線（固定閾值分割方法，當作跟 U-Net 比較的對照）==")
     base_dices, base_ious = naive_threshold_baseline(X_test, Y_test)
     print(f"平均 Dice = {base_dices.mean():.4f}   平均 IoU = {base_ious.mean():.4f}\n")
 
@@ -158,7 +158,7 @@ def main():
     unet_ious = np.array([iou_score(p, g) for p, g in zip(preds, gts)])
     print(f"U-Net 平均 Dice = {unet_dices.mean():.4f}   平均 IoU = {unet_ious.mean():.4f}")
 
-    print(f"\n== 總結比較（第 6 課基準線 vs 這裡訓練出來的 U-Net）==")
+    print(f"\n== 總結比較（陽春閾值基準線 vs 這裡訓練出來的 U-Net）==")
     print(f"  陽春閾值基準線: Dice={base_dices.mean():.4f}  IoU={base_ious.mean():.4f}")
     print(f"  TinyUNet      : Dice={unet_dices.mean():.4f}  IoU={unet_ious.mean():.4f}")
 

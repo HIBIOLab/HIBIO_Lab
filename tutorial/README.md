@@ -80,17 +80,38 @@ pip install -r requirements.txt
 
 ## 資料集說明
 
-為了讓每堂課「打開就能跑」，程式碼一律使用**免帳號、可自動下載或套件內建**的資料集，不需要額外申請 Kaggle API 金鑰：
+為了讓每堂課盡量「打開就能跑」，程式碼優先使用**套件內建或可自動下載**的資料集，不需要額外申請 Kaggle API 金鑰；少數幾課用到需要手動下載的資料集（第 12、14、15 課的 COVID CSV 免帳號、只需下載兩個檔案，第 5、6 課的完整 3D-IRCADb-01 需免費註冊），程式在找不到資料時都會印出清楚的下載指引、不會報錯中斷：
 
 | 資料集 | 用在哪些課 | 說明 |
 |---|---|---|
-| MNIST（手寫數字） | 3, 4, 5, 6, 10, 16, 17, 18, 19, 22 | `torchvision.datasets.MNIST` 自動下載，約 10MB |
+| MNIST（手寫數字） | 3, 4, 10, 16, 17, 18, 19, 22 | `torchvision.datasets.MNIST` 自動下載，約 10MB |
 | CIFAR-10（10 類小型彩色圖） | 20, 21 | `torchvision.datasets.CIFAR10` 自動下載，約 170MB（University of Toronto 官方主機，下載速度視網路狀況可能較慢） |
 | ImageNet 預訓練 ResNet18 權重 | 21 | `torchvision.models.ResNet18_Weights.IMAGENET1K_V1` 自動下載，約 45MB |
-| Breast Cancer Wisconsin (Diagnostic) | 1, 2, 9, 11, 12, 14 | `sklearn.datasets.load_breast_cancer`，套件內建、免下載。與 Kaggle 上同名的乳癌診斷資料集是同一份，569 位病人、30 項腫瘤特徵、良性/惡性標籤 |
+| Breast Cancer Wisconsin (Diagnostic) | 1, 2, 9, 11 | `sklearn.datasets.load_breast_cancer`，套件內建、免下載。與 Kaggle 上同名的乳癌診斷資料集是同一份，569 位病人、30 項腫瘤特徵、良性/惡性標籤 |
 | Digits（手寫數字，8×8 小圖） | 13 | `sklearn.datasets.load_digits`，套件內建 |
+| COVID-19 Cases Prediction（Delphi group） | 12, 14, 15 | 美國 CMU Delphi group 的社群症狀／行為問卷（Facebook / COVIDcast），也是李宏毅 ML2022 HW01 的題目。116 個特徵（37 州 one-hot ＋ 連續 5 天問卷指標）、回歸目標為當天陽性率。**免帳號、單純下載兩個 CSV**：到 [ML2022-Spring HW01](https://github.com/virginiakm1988/ML2022-Spring/tree/main/HW01) 取得 `covid.train.csv`、`covid.test.csv`，放到 `tutorial/data/covid/` 即可（沒放時程式會印出下載指引） |
 | pydicom 內建 CT 範例 | 8, 22 | `pydicom.data.get_testdata_file()`，套件內建的真實 DICOM 檔案，免下載 |
-| 合成資料（模擬 radiomics 高維度小樣本） | 15 | `sklearn.datasets.make_regression` 產生，用來模擬「300 個特徵、80 位病人」的情境 |
+| 3D-IRCADb-01（真實肝臟腫瘤 CT） | 5, 6 | 單張切片的靜態圖片放在 `tutorial/assets/`，免下載即可用；**完整資料集（20 位病人）需要自行到 [IRCAD 官網](https://www.ircad.fr/research-and-development/data-sets/liver-segmentation-3d-ircadb-01/)免費註冊下載**，用來在第 6 課訓練一個真正的 Attention U-Net，並讓第 5 課算出跨病人的真實不平衡統計 |
+
+### 想在完整 3D-IRCADb-01 上訓練？
+
+第 6 課有兩支處理完整資料集的程式，接續第 5 課的問題，實際訓練一個分割模型：
+
+```bash
+cd tutorial/lessons/06-dice-iou
+
+# 1) 到 IRCAD 官網免費註冊、下載 3D-IRCADb-01，解壓縮「外層」到 tutorial/data/3Dircadb1/
+#    （裡面應該看得到 3Dircadb1.1/、3Dircadb1.2/ ... 這些資料夾；注意每個資料夾內的
+#     PATIENT_DICOM.zip、MASKS_DICOM.zip 等「內層 zip」不用手動解，下一步會自動處理）
+
+# 2) 把原始 DICOM 轉成訓練用的 2D 切片（會自動解開內層 zip，並套用第 8 課的 HU windowing）
+python prepare_ircadb_dataset.py
+
+# 3) 訓練 Attention U-Net（liver + tumor 雙通道），evaluate 用第 6 課定義的 dice_score/iou_score
+python train_attention_unet_ircadb.py
+```
+
+沒有下載資料集也沒關係，兩支程式都會印出清楚的下載指引，不會報錯中斷；下載並用 `prepare_ircadb_dataset.py` 轉換好之後，第 5 課的 `segmentation_imbalance_demo.py` 就會算出整個資料集的真實不平衡統計數字。
 
 **想換成 Kaggle 上的真實醫學影像資料集？** 多數程式碼把資料載入獨立成一個函式（例如 `load_data()`、`load_imbalanced_mnist()`），只要照著同樣的輸入輸出格式，把資料來源換成你從 Kaggle 下載好的資料夾即可。第 7 課（分割任務類型）的程式碼註解中特別列出了對應的 Kaggle 資料集建議（2018 Data Science Bowl 細胞核實例分割）。下載與登入 Kaggle 帳號需要你自己完成，我們不會替你處理帳密或下載檔案。
 
@@ -112,13 +133,18 @@ python mlp_demo.py
 tutorial/
 ├── index.html              # 教學網頁（22 堂課的說明、圖示、練習）
 ├── requirements.txt         # pip 套件清單（在 conda 環境裡用 pip install -r 這個檔案）
+├── assets/                  # 網頁用的靜態真實資料圖片（會進版控）
 ├── lessons/
 │   ├── 01-holdout/
 │   ├── 02-kfold-cv/
 │   ├── ...
+│   ├── 06-dice-iou/
+│   │   ├── prepare_ircadb_dataset.py         # 完整資料集：DICOM -> 訓練用切片
+│   │   └── train_attention_unet_ircadb.py    # 完整資料集：訓練 Attention U-Net
+│   ├── ...
 │   ├── 20-vit-gradcam/
 │   ├── 21-transfer-learning/
 │   └── 22-data-augmentation-medical/
-├── data/                    # 資料集下載快取（.gitignore，不會進版控）
+├── data/                    # 資料集下載快取，含使用者下載的 3Dircadb1/（.gitignore，不會進版控）
 └── outputs/                 # 程式產生的圖表（.gitignore，不會進版控）
 ```
