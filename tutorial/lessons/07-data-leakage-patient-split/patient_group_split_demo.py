@@ -1,5 +1,5 @@
 """
-第 9 課：Data Leakage 與病人層級切分 / Data Augmentation
+第 7 課：Data Leakage 與病人層級切分
 資料集：Breast Cancer Wisconsin (Diagnostic)（sklearn 內建）
 
 Breast Cancer 資料集本身「一列 = 一位病人」，沒有天生的分組結構，所以這裡
@@ -79,18 +79,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-# ------------------------------------------------------------------
-# 課後練習（對照 index.html 第 9 課）：
-# 1) 把 noise_std 調大（例如 0.1 甚至 0.3），讓同一位病人的切片彼此差異
-#    變大，重新比較 KNN 的『錯誤切分 vs 正確切分』差距是否縮小？這說明了
-#    『病人內變異 vs 病人間變異』如何影響 leakage 的嚴重程度。
-# 2) 找出下面 pipeline 的錯誤並修正：
-#      "先對全部影像資料做 StandardScaler().fit_transform(X)，
-#       再用 train_test_split 隨機切分成 train/test。"
-#    （提示：StandardScaler 應該只 fit 在哪一份資料上？）
-# 3) 用 torchvision.transforms 寫一個包含 RandomRotation、
-#    RandomHorizontalFlip、ColorJitter 的 augmentation pipeline，
-#    套用在幾張 MNIST 圖片上並存成圖片比較前後差異；再想想：如果這是
-#    一張『胸部 X 光』，RandomHorizontalFlip 還適合直接套用嗎？
-# ------------------------------------------------------------------

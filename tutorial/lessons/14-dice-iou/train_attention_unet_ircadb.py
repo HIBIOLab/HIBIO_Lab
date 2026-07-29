@@ -1,5 +1,5 @@
 """
-第 5、6 課合併練習：在真實的 3D-IRCADb-01 資料集上訓練一個 Attention U-Net，
+第 13、14 課合併練習：在真實的 3D-IRCADb-01 資料集上訓練一個 Attention U-Net，
 訓練完成後同時計算 accuracy / Dice / IoU，親眼比較這三個指標講的是不是同一件事。
 
 資料集：3D-IRCADb-01（https://www.ircad.fr/research-and-development/data-sets/liver-segmentation-3d-ircadb-01/）
@@ -18,7 +18,7 @@
   - 拿掉一些工程細節（例如過度複雜的早停/警告訊息），保留核心結構：
     Attention Gate、Dice+BCE 混合 loss、liver+tumor 雙通道輸出
   - 每個 epoch 同時算出 accuracy 跟 Dice/IoU，訓練結束後跟『完全不訓練、
-    永遠猜沒有』的全黑基準線並排比較，這就是第 5、6 課合併練習的重點
+    永遠猜沒有』的全黑基準線並排比較，這就是第 13、14 課合併練習的重點
 """
 
 import sys
@@ -376,7 +376,7 @@ def main():
     axes[2].legend(fontsize=8)
 
     fig.tight_layout()
-    out_path = OUTPUT_DIR / "06_attention_unet_training.png"
+    out_path = OUTPUT_DIR / "14_attention_unet_training.png"
     fig.savefig(out_path, dpi=120)
     print(f"\n訓練曲線已存到: {out_path}")
 
@@ -385,7 +385,7 @@ if __name__ == "__main__":
     main()
 
 # ------------------------------------------------------------------
-# 課後練習（第 5、6 課合併練習，對照 index.html）：
+# 課後練習（第 13、14 課合併練習，對照 index.html）：
 #
 # 1) accuracy 與 Dice 何時「兜不起來」＋ 評估指標本身也會騙人：
 #    對照最後的「全黑基準線 vs Attention U-Net」表格——全黑基準線的 tumor

@@ -1,12 +1,14 @@
 """
 第 19 課：Attention 機制與 Transformer
-資料集：MNIST，沿用第 18 課『把 28x28 圖片橫切成 28 個時間步』的序列設定，
-        方便直接跟 LSTM/GRU 做比較。
+資料集：MNIST，把每張 28x28 圖片橫切成 28 個時間步（每步 28 維）當作序列，
+        用 self-attention 取代 RNN 來處理（同一種『影像當序列』的教學手法，
+        方便對照第 18 課 RNN 與這裡 attention 的差異）。
 
 這裡自己手刻一個最小的 self-attention（明確拆出 Query / Key / Value），
 疊成一個迷你 Transformer encoder 來做分類，並且：
   1) 把 self-attention 的權重矩陣畫出來，具體看到模型『在關注哪些列』。
-  2) 跟第 18 課的 LSTM/GRU 比較準確率、參數量、訓練時間。
+  2) 觀察 Transformer 相對 RNN 的關鍵差異：每個時間步可以『同時』關注所有
+     其他時間步、天生可平行運算，不像 RNN 必須一步一步循序處理。
 """
 
 import sys
@@ -138,9 +140,9 @@ def main():
     print(f"參數量: {count_params(model):,}\n")
     acc, elapsed = train_and_eval(model, train_loader, test_loader)
     print(f"\nTinyTransformer: test_acc={acc:.4f}  訓練耗時={elapsed:.1f}s")
-    print("（可以拿這個數字跟第 18 課的 LSTM/GRU 比較：Transformer 因為")
+    print("（跟第 18 課的 RNN 對照：同樣把影像當成 28 步的序列，Transformer 因為")
     print(" 每個時間步可以『同時』關注所有其他時間步，天生可以平行運算，")
-    print(" 不像 RNN 必須一步一步循序處理。）")
+    print(" 不像 RNN（LSTM/GRU）必須一步一步循序處理。）")
 
     print("\n== 畫出一個測試樣本的 self-attention 權重 ==")
     model.eval()

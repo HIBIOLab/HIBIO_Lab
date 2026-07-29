@@ -1,5 +1,5 @@
 """
-第 11 課：Logistic Regression
+第 8 課：Logistic Regression
 資料集：Breast Cancer Wisconsin (Diagnostic)（sklearn 內建）
 
 訓練一個 logistic regression 來預測腫瘤是良性還是惡性，並把每個特徵的
@@ -62,7 +62,7 @@ if __name__ == "__main__":
     main()
 
 # ------------------------------------------------------------------
-# 課後練習（對照 index.html 第 11 課）：
+# 課後練習（對照 index.html 第 8 課）：
 # 1) 寫出 logistic regression 的假設函數 sigma(w.x+b) 與 cross-entropy
 #    loss 的公式（紙筆或註解皆可），並在程式中用 model.coef_、
 #    model.intercept_ 印出實際學到的 w 和 b。

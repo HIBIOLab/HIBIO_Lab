@@ -1,5 +1,5 @@
 """
-第 6 課 - 資料前處理：把 3D-IRCADb-01 原始 DICOM 轉成訓練用的 2D 切片
+第 14 課 - 資料前處理：把 3D-IRCADb-01 原始 DICOM 轉成訓練用的 2D 切片
 資料來源：https://www.ircad.fr/research-and-development/data-sets/liver-segmentation-3d-ircadb-01/
 （需要免費註冊帳號才能下載，我們不會替你處理帳密或下載檔案）
 
@@ -19,7 +19,7 @@
 是 CT 切片，MASKS_DICOM/liver/ 是肝臟遮罩、MASKS_DICOM/livertumor01/（02, 03…）是
 腫瘤遮罩。接著把它們轉換成訓練程式（train_attention_unet_ircadb.py）容易讀取的
 格式：每個病人每張切片存成一個 .npz 檔，包含 CT 影像、肝臟遮罩、腫瘤遮罩（多顆
-腫瘤會自動合併成一張遮罩），並套用第 8 課教過的 HU windowing。
+腫瘤會自動合併成一張遮罩），並套用第 6 課教過的 HU windowing。
 
 用法：
     1) 到上面的網址下載並解壓縮「外層」資料集，放到 tutorial/data/3Dircadb1/，
@@ -45,7 +45,7 @@ RAW_DIR = DATA_DIR / "3Dircadb1"          # 使用者下載解壓縮後放這裡
 OUT_DIR = DATA_DIR / "ircadb_slices"       # 轉換後的輸出
 
 IMAGE_SIZE = 256          # 跟參考 notebook 一致，統一 resize 成 256x256
-WINDOW_LEVEL, WINDOW_WIDTH = 40, 400  # 第 8 課教過的『軟組織窗』，適合看肝臟
+WINDOW_LEVEL, WINDOW_WIDTH = 40, 400  # 第 6 課教過的『軟組織窗』，適合看肝臟
 
 
 def ensure_dir(parent: Path, name: str) -> Path:
@@ -100,7 +100,7 @@ def read_dicom_series(folder: Path):
 
 
 def apply_window(hu_array, level=WINDOW_LEVEL, width=WINDOW_WIDTH):
-    """跟第 8 課一樣的 windowing，把 HU 值壓成 0-1 的浮點數。"""
+    """跟第 6 課一樣的 windowing，把 HU 值壓成 0-1 的浮點數。"""
     low, high = level - width / 2, level + width / 2
     windowed = np.clip(hu_array, low, high)
     return (windowed - low) / (high - low)
