@@ -1,6 +1,6 @@
 # 醫學影像 AI 教學區 — 程式碼
 
-這個資料夾對應 [../tutorial/index.html](./index.html) 的 22 堂課，每堂課都有一個獨立資料夾（`lessons/01-holdout/` ~ `lessons/22-data-augmentation-medical/`），內含**可直接執行**的訓練 / 示範程式碼。
+這個資料夾對應 [./tutorial/index.html](./index.html) 的 22 堂課，每堂課都有一個獨立資料夾（`lessons/01-holdout/` ~ `lessons/22-data-augmentation-medical/`），內含**可直接執行**的訓練 / 示範程式碼。
 
 ## 環境設定（conda 建環境 + pip 裝 GPU 版 PyTorch）
 
