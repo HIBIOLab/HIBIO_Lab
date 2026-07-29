@@ -1,5 +1,5 @@
 """
-第 14 課：Random Forest
+第 11 課：Random Forest
 資料集：COVID-19 Cases Prediction（Delphi group / 李宏毅 ML2022 HW01）
         https://github.com/virginiakm1988/ML2022-Spring/tree/main/HW01
 
@@ -108,7 +108,7 @@ def main():
     ax.set_xlabel("Feature Importance")
     ax.set_title("Random Forest: Top 10 重要特徵（COVID 陽性率預測）")
     fig.tight_layout()
-    out_path = OUTPUT_DIR / "14_random_forest_importance.png"
+    out_path = OUTPUT_DIR / "11_random_forest_importance.png"
     fig.savefig(out_path, dpi=120)
     print(f"\n圖片已存到: {out_path}")
     print("=> feature importance 幾乎被『最近幾天的 tested_positive』佔滿，非常符合")
@@ -120,7 +120,7 @@ if __name__ == "__main__":
     main()
 
 # ------------------------------------------------------------------
-# 課後練習（對照 index.html 第 14 課）：
+# 課後練習（對照 index.html 第 11 課）：
 # 1) 解釋 bagging（自助抽樣聚合）如何幫助降低模型 variance？可以對照上面
 #    Decision Tree 和 Random Forest 的 R2 平均與標準差來說明；也可以試著把
 #    DecisionTreeRegressor(max_depth=5) 加上深度限制，觀察是否更接近 RF。

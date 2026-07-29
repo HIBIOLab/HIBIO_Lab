@@ -1,5 +1,5 @@
 """
-第 13 課：K-Means Clustering
+第 10 課：K-Means Clustering
 資料集：Digits（sklearn 內建，1797 張 8x8 手寫數字小圖，10 個類別）
 
 K-means 是非監督式學習，這裡刻意「假裝不知道標籤」，只用像素特徵去分群，
@@ -61,7 +61,7 @@ def main():
     axes[1].set_ylabel("Silhouette Score")
     axes[1].set_title("Silhouette Score vs K")
     fig.tight_layout()
-    fig.savefig(OUTPUT_DIR / "13_kmeans_elbow_silhouette.png", dpi=120)
+    fig.savefig(OUTPUT_DIR / "10_kmeans_elbow_silhouette.png", dpi=120)
 
     print("== 用 K=10 跑 K-means，看看每個 cluster 的『中心影像』長什麼樣 ==")
     km10 = KMeans(n_clusters=10, n_init=10, random_state=42)
@@ -85,7 +85,7 @@ def main():
         ax.axis("off")
     fig2.suptitle("K-Means Cluster Centers（還原成 8x8 影像）")
     fig2.tight_layout()
-    fig2.savefig(OUTPUT_DIR / "13_kmeans_cluster_centers.png", dpi=120)
+    fig2.savefig(OUTPUT_DIR / "10_kmeans_cluster_centers.png", dpi=120)
     print(f"\n圖片已存到: {OUTPUT_DIR / '13_kmeans_elbow_silhouette.png'}")
     print(f"圖片已存到: {OUTPUT_DIR / '13_kmeans_cluster_centers.png'}")
 
@@ -94,7 +94,7 @@ if __name__ == "__main__":
     main()
 
 # ------------------------------------------------------------------
-# 課後練習（對照 index.html 第 13 課）：
+# 課後練習（對照 index.html 第 10 課）：
 # 1) 簡述 K-means 演算法的兩個交替步驟（assignment / update），可以在
 #    程式中找到 sklearn KMeans 對應的行為並用註解標出來。
 # 2) 觀察上面印出的『每個 cluster 純度』，哪幾個 cluster 純度特別低？

@@ -1,5 +1,5 @@
 """
-第 12 課：K-Nearest Neighbors (KNN)
+第 9 課：K-Nearest Neighbors (KNN)
 資料集：COVID-19 Cases Prediction（Delphi group / 李宏毅 ML2022 HW01）
         https://github.com/virginiakm1988/ML2022-Spring/tree/main/HW01
 
@@ -68,8 +68,8 @@ def scaling_matters(X, y):
     print("=> KNN 用『距離』找鄰居，特徵的尺度會直接決定誰主導距離。教科書常說")
     print("   『KNN 一定要先 scaling』——那是因為當各特徵尺度差很大、又同樣重要時，")
     print("   不 scaling 會讓大尺度特徵獨佔距離。但 COVID 這份資料是個有趣的反例：")
-    print("   116 個特徵裡真正有預測力的其實只有少數『最近幾天的陽性率』(見第 14、")
-    print("   15 課)，它們本來就是 0~100 的大尺度，不 scaling 時距離剛好由這些有用")
+    print("   116 個特徵裡真正有預測力的其實只有少數『最近幾天的陽性率』(見第 11、")
+    print("   12 課)，它們本來就是 0~100 的大尺度，不 scaling 時距離剛好由這些有用")
     print("   特徵主導，分數反而略高；一旦 scaling 把 37 個 one-hot 州別和一堆冗餘")
     print("   欄位全拉到同等權重，有用的訊號反而被稀釋。")
     print("   結論：scaling 讓特徵站上同一個尺度，但『同尺度』只有在特徵同樣重要時")
@@ -100,7 +100,7 @@ def k_sweep(X_scaled, y):
     ax.set_title("KNN Regressor: R2 vs K（COVID 陽性率預測）")
     ax.legend()
     fig.tight_layout()
-    out_path = OUTPUT_DIR / "12_knn_k_sweep.png"
+    out_path = OUTPUT_DIR / "09_knn_k_sweep.png"
     fig.savefig(out_path, dpi=120)
     print(f"圖片已存到: {out_path}\n")
 
@@ -116,7 +116,7 @@ def curse_of_dimensionality():
         ratio = dists.min() / dists.max()
         print(f"  維度={dim:5d}:  最近/最遠距離比值 = {ratio:.4f}")
     print("=> 維度越高，比值越接近 1，代表『最近的鄰居』跟『最遠的鄰居』幾乎一樣")
-    print("   遠 —— 距離失去鑑別力。COVID 有 116 個特徵，這也是為什麼先用第 14、15")
+    print("   遠 —— 距離失去鑑別力。COVID 有 116 個特徵，這也是為什麼先用第 11、12")
     print("   課的方法篩掉冗餘特徵，往往能讓 KNN 這類靠距離的模型表現更好。")
 
 
@@ -136,11 +136,11 @@ if __name__ == "__main__":
     main()
 
 # ------------------------------------------------------------------
-# 課後練習（對照 index.html 第 12 課）：
+# 課後練習（對照 index.html 第 9 課）：
 # 1) 一般都說 KNN 前要先 feature scaling，但這裡 scaling 後 R2 反而略降。結合
 #    scaling_matters() 的結果說明原因：scaling 什麼時候幫得上忙、什麼時候反而
 #    稀釋了少數真正有用的特徵？（提示：跟「多數特徵是冗餘的」有關）
 # 2) 在 116 個特徵上直接用 KNN 會遇到維度詛咒。可以怎麼緩解（提示：先用
-#    第 14 課 Random Forest 的 feature importance，或第 15 課的 Lasso 做特徵
+#    第 11 課 Random Forest 的 feature importance，或第 12 課的 Lasso 做特徵
 #    篩選，只留最重要的幾個特徵再跑 KNN）？動手比較篩選前後的 R2。
 # ------------------------------------------------------------------

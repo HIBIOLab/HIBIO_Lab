@@ -1,5 +1,5 @@
 """
-第 15 課：Ridge / Lasso Regression（正則化）
+第 12 課：Ridge / Lasso Regression（正則化）
 資料集：COVID-19 Cases Prediction（Delphi group / 李宏毅 ML2022 HW01）
         https://github.com/virginiakm1988/ML2022-Spring/tree/main/HW01
 
@@ -127,7 +127,7 @@ if __name__ == "__main__":
     main()
 
 # ------------------------------------------------------------------
-# 課後練習（對照 index.html 第 15 課）：
+# 課後練習（對照 index.html 第 12 課）：
 # 1) 對照印出的「非零係數個數」，說明 L1 (Lasso) 與 L2 (Ridge) 在「特徵篩選」
 #    這一點的關鍵差異：為什麼 Ridge 幾乎不會把係數壓到剛好 0？
 # 2) 調整 Lasso 的 alpha（例如 0.01、0.1、1.0），觀察非零係數個數與 val R2
