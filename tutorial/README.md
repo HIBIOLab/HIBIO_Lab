@@ -52,7 +52,7 @@ pip install -r requirements.txt
 - **NVIDIA 顯示卡驅動 (Driver)**：讓作業系統認得你的顯卡，`nvidia-smi` 這個指令就是驅動裝好才會有的工具。**這個一定要裝，conda/pip 都沒辦法幫你裝，要自己去 NVIDIA 官網下載安裝。**
 - **CUDA Toolkit**：NVIDIA 提供給「開發者編譯 CUDA 程式」用的完整工具包（含編譯器 `nvcc`、函式庫、範例）。
 - **cuDNN**：專門給深度學習用的加速函式庫，通常疊在 CUDA Toolkit 上面用。
-- 
+  
 ### 完整版：手動安裝 CUDA Toolkit + cuDNN（進階／其他用途才需要）
 
 只有當你之後要用到「需要自己編譯 CUDA 原始碼」的套件、或要跑非 PyTorch 的框架時才需要這一節，跟上面的 conda 環境彼此獨立、互不影響：
