@@ -19,17 +19,11 @@ pip install -r requirements.txt
 
 ## Windows GPU 環境設定（第一次裝 CUDA 的人看這裡）
 
-如果你是 Windows 第一次要跑 GPU 深度學習環境，看到 CUDA / cuDNN / CUDA Toolkit 這幾個名詞會搞混很正常，這裡先講清楚它們的關係，再給步驟。
+如果你是 Windows 第一次要跑 GPU 深度學習環境，看到 CUDA / cuDNN / CUDA Toolkit 這幾個名詞會搞混很正常，後面會講清楚它們的關係。
 
-### 先搞懂：這幾個東西差在哪
+###  快速版：conda + pip（適合大多數人，也是本專案建議的方式）
 
-- **NVIDIA 顯示卡驅動 (Driver)**：讓作業系統認得你的顯卡，`nvidia-smi` 這個指令就是驅動裝好才會有的工具。**這個一定要裝，conda/pip 都沒辦法幫你裝，要自己去 NVIDIA 官網下載安裝。**
-- **CUDA Toolkit**：NVIDIA 提供給「開發者編譯 CUDA 程式」用的完整工具包（含編譯器 `nvcc`、函式庫、範例）。
-- **cuDNN**：專門給深度學習用的加速函式庫，通常疊在 CUDA Toolkit 上面用。
-
-### ⚡ 快速版：conda + pip（適合大多數人，也是本專案建議的方式）
-
-**好消息：你不需要自己裝 CUDA Toolkit 或 cuDNN。** `pip install torch` 裝下來的 PyTorch wheel 已經把對應版本的 CUDA / cuDNN 執行期函式庫直接包在裡面了，只需要「顯示卡驅動」認得你的顯卡即可。步驟：
+**你不需要自己裝 CUDA Toolkit 或 cuDNN。** `pip install torch` 裝下來的 PyTorch wheel 已經把對應版本的 CUDA / cuDNN 執行期函式庫直接包在裡面了，只需要「顯示卡驅動」認得你的顯卡即可。步驟：
 
 1. 確認你有 NVIDIA 顯示卡：桌面右鍵 →「NVIDIA 控制面板」→「系統資訊」，或工作管理員「效能」分頁看有沒有 GPU 0/1 顯示 NVIDIA 型號。
 2. 到 [NVIDIA 官方驅動下載頁](https://www.nvidia.com/Download/index.aspx) 選你的顯卡型號，下載安裝最新驅動，安裝完**重新開機**。
@@ -52,7 +46,14 @@ pip install -r requirements.txt
    ```
    印出 `True` 和你的顯卡名稱就大功告成，**可以跳過下面「完整版」**，不需要再裝任何東西。
 
-### 🔧 完整版：手動安裝 CUDA Toolkit + cuDNN（進階／其他用途才需要）
+
+### 這幾個東西差在哪
+
+- **NVIDIA 顯示卡驅動 (Driver)**：讓作業系統認得你的顯卡，`nvidia-smi` 這個指令就是驅動裝好才會有的工具。**這個一定要裝，conda/pip 都沒辦法幫你裝，要自己去 NVIDIA 官網下載安裝。**
+- **CUDA Toolkit**：NVIDIA 提供給「開發者編譯 CUDA 程式」用的完整工具包（含編譯器 `nvcc`、函式庫、範例）。
+- **cuDNN**：專門給深度學習用的加速函式庫，通常疊在 CUDA Toolkit 上面用。
+- 
+### 完整版：手動安裝 CUDA Toolkit + cuDNN（進階／其他用途才需要）
 
 只有當你之後要用到「需要自己編譯 CUDA 原始碼」的套件、或要跑非 PyTorch 的框架時才需要這一節，跟上面的 conda 環境彼此獨立、互不影響：
 
