@@ -2,7 +2,8 @@
 第 17 課 (1/2)：CNN
 資料集：MNIST（torchvision 自動下載）
 
-訓練一個小型 CNN 做手寫數字十分類，跟第 16 課的 MLP 比較：
+訓練一個小型 CNN 做手寫數字十分類，跟一個同級的 MLP 基準線比較
+（MLP 概念見第 16 課，這裡為了在同一份 MNIST 上對照而自建一個）：
   - 參數量（CNN 靠權重共享，通常用更少參數達到更好效果）
   - Test accuracy
 """
@@ -34,7 +35,7 @@ def get_loaders(batch_size=128, train_subset=6000, test_subset=2000):
 
 
 class SimpleMLP(nn.Module):
-    """跟第 16 課同樣架構，當作比較基準。"""
+    """全連接 (MLP) 架構，當作跟 CNN 比較的基準（概念同第 16 課的 MLP）。"""
     def __init__(self):
         super().__init__()
         self.net = nn.Sequential(
@@ -99,7 +100,7 @@ def main():
     print(f"使用裝置: {DEVICE}")
     train_loader, test_loader = get_loaders()
 
-    print("\n== MLP（第 16 課同款架構）==")
+    print("\n== MLP（全連接基準線，概念同第 16 課的 MLP）==")
     mlp = SimpleMLP()
     print(f"參數量: {count_params(mlp):,}")
     mlp_acc = train_and_eval(mlp, train_loader, test_loader)

@@ -1,5 +1,5 @@
 """
-第 7 課：語意分割 / 實例分割 / 全景分割
+第 15 課：語意分割 / 實例分割 / 全景分割
 資料：用 numpy 產生一張合成影像，裡面畫了 5 顆大小不一、有些相鄰的『細胞』，
       模擬病理切片細胞計數的情境（沒有現成的小型細胞分割資料集可以免帳號
       下載，若要練真實資料，可參考檔案最下方的 Kaggle 資料集建議）。
@@ -104,7 +104,7 @@ def main():
     for ax in axes:
         ax.axis("off")
     fig.tight_layout()
-    out_path = OUTPUT_DIR / "07_segmentation_types.png"
+    out_path = OUTPUT_DIR / "15_segmentation_types.png"
     fig.savefig(out_path, dpi=120)
     print(f"\n圖片已存到: {out_path}")
 
@@ -113,7 +113,7 @@ if __name__ == "__main__":
     main()
 
 # ------------------------------------------------------------------
-# 課後練習（對照 index.html 第 7 課）：
+# 課後練習（對照 index.html 第 15 課）：
 # 1) 在 CELLS 中再加入一顆跟第 5 顆完全重疊的細胞，觀察 instance_id_map
 #    中「後畫的蓋掉先畫的」這個簡化假設會造成什麼問題？實務上（如
 #    Mask R-CNN）是怎麼處理重疊物件的？

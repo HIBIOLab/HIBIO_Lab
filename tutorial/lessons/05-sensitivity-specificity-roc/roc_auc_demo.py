@@ -1,5 +1,5 @@
 """
-第 10 課：Sensitivity / Specificity 與 ROC-AUC / PR-AUC
+第 5 課：Sensitivity / Specificity 與 ROC-AUC / PR-AUC
 資料集：MNIST，沿用第 3、4 課『是 0 vs 不是 0』的極端不平衡設定（陽性僅 2%）
 
 這一課：
@@ -115,7 +115,7 @@ def main():
     axes[1].legend()
 
     fig.tight_layout()
-    out_path = OUTPUT_DIR / "10_roc_pr_curve.png"
+    out_path = OUTPUT_DIR / "05_roc_pr_curve.png"
     fig.savefig(out_path, dpi=120)
     print(f"\n圖片已存到: {out_path}")
 
@@ -124,7 +124,7 @@ if __name__ == "__main__":
     main()
 
 # ------------------------------------------------------------------
-# 課後練習（對照 index.html 第 10 課）：
+# 課後練習（對照 index.html 第 5 課）：
 # 1) 承第 4 課練習，掃描不同的決策閾值（0.1~0.9），計算每個閾值下的
 #    sensitivity 與 specificity，畫出「sensitivity vs 1-specificity」，
 #    確認畫出來的點會落在 ROC curve 上。
