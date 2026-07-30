@@ -13,10 +13,15 @@
         }
         
         body {
-            font-family: 'Segoe UI', 'Microsoft JhengHei', sans-serif;
+            font-family: 'Segoe UI', 'Microsoft JhengHei', 'PingFang TC', 'Noto Sans TC', sans-serif;
             line-height: 1.6;
             color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background:
+                radial-gradient(circle at 12% 18%, rgba(59, 130, 246, 0.10), transparent 42%),
+                radial-gradient(circle at 88% 12%, rgba(29, 78, 216, 0.08), transparent 40%),
+                radial-gradient(circle at 78% 90%, rgba(59, 130, 246, 0.07), transparent 46%),
+                linear-gradient(160deg, #eef5fc 0%, #f7fbfe 45%, #e9f2fb 100%);
+            background-attachment: fixed;
             min-height: 100vh;
         }
         
@@ -39,7 +44,7 @@
 
         .header h1 {
             font-size: 3em;
-            background: linear-gradient(45deg, #667eea, #764ba2);
+            background: linear-gradient(45deg, #3b82f6, #1d4ed8);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 10px;
@@ -70,21 +75,21 @@
             font-size: 16px;
             font-weight: 600;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            color: #667eea;
+            box-shadow: 0 4px 14px rgba(59, 130, 246, 0.15);
+            color: #1d4ed8;
         }
-        
+
         .nav-tab:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-            background: linear-gradient(45deg, #667eea, #764ba2);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 22px rgba(59, 130, 246, 0.3);
+            background: linear-gradient(45deg, #3b82f6, #1d4ed8);
             color: white;
         }
-        
+
         .nav-tab.active {
-            background: linear-gradient(45deg, #667eea, #764ba2);
+            background: linear-gradient(45deg, #3b82f6, #1d4ed8);
             color: white;
-            transform: translateY(-3px);
+            transform: translateY(-2px);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
         }
         
@@ -109,7 +114,7 @@
         
         .section-title {
             font-size: 2.5em;
-            color: #667eea;
+            color: #3b82f6;
             margin-bottom: 30px;
             text-align: center;
             position: relative;
@@ -120,7 +125,7 @@
             display: block;
             width: 100px;
             height: 4px;
-            background: linear-gradient(45deg, #667eea, #764ba2);
+            background: linear-gradient(45deg, #3b82f6, #1d4ed8);
             margin: 15px auto;
             border-radius: 2px;
         }
@@ -131,11 +136,11 @@
         
         .tip-item {
             counter-increment: tip-counter;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(29, 78, 216, 0.1));
             margin-bottom: 25px;
             padding: 25px;
             border-radius: 15px;
-            border-left: 5px solid #667eea;
+            border-left: 5px solid #3b82f6;
             position: relative;
             transition: all 0.3s ease;
         }
@@ -150,7 +155,7 @@
             position: absolute;
             left: -15px;
             top: 15px;
-            background: linear-gradient(45deg, #667eea, #764ba2);
+            background: linear-gradient(45deg, #3b82f6, #1d4ed8);
             color: white;
             width: 30px;
             height: 30px;
@@ -165,7 +170,7 @@
         .tip-title {
             font-size: 1.3em;
             font-weight: 700;
-            color: #667eea;
+            color: #3b82f6;
             margin-bottom: 10px;
             margin-left: 20px;
         }
@@ -183,8 +188,8 @@
         }
         
         .phase-item {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
-            border: 2px solid rgba(102, 126, 234, 0.2);
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(29, 78, 216, 0.05));
+            border: 2px solid rgba(59, 130, 246, 0.2);
             border-radius: 15px;
             padding: 25px;
             transition: all 0.3s ease;
@@ -199,11 +204,11 @@
             left: 0;
             width: 5px;
             height: 100%;
-            background: linear-gradient(45deg, #667eea, #764ba2);
+            background: linear-gradient(45deg, #3b82f6, #1d4ed8);
         }
         
         .phase-item:hover {
-            border-color: #667eea;
+            border-color: #3b82f6;
             transform: translateY(-5px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
@@ -211,7 +216,7 @@
         .phase-number {
             font-size: 1.5em;
             font-weight: bold;
-            color: #667eea;
+            color: #3b82f6;
             margin-bottom: 10px;
         }
         
@@ -244,8 +249,8 @@
         }
         
         .meeting-structure {
-            background: rgba(102, 126, 234, 0.05);
-            border: 1px solid rgba(102, 126, 234, 0.2);
+            background: rgba(59, 130, 246, 0.05);
+            border: 1px solid rgba(59, 130, 246, 0.2);
             border-radius: 10px;
             padding: 20px;
             margin: 20px 0;
@@ -256,12 +261,12 @@
             padding: 10px 15px;
             background: white;
             border-radius: 8px;
-            border-left: 3px solid #667eea;
+            border-left: 3px solid #3b82f6;
         }
         
         .structure-title {
             font-weight: 600;
-            color: #667eea;
+            color: #3b82f6;
             margin-bottom: 5px;
         }
         
@@ -296,7 +301,7 @@
         .progress-bar {
             width: 100%;
             height: 6px;
-            background: rgba(102, 126, 234, 0.2);
+            background: rgba(59, 130, 246, 0.2);
             border-radius: 3px;
             margin: 20px 0;
             overflow: hidden;
@@ -304,7 +309,7 @@
         
         .progress-fill {
             height: 100%;
-            background: linear-gradient(45deg, #667eea, #764ba2);
+            background: linear-gradient(45deg, #3b82f6, #1d4ed8);
             border-radius: 3px;
             transition: width 0.5s ease;
         }
@@ -314,19 +319,19 @@
     <div class="container">
         <div class="header">
             <img src="./img/HIBIO.svg" alt="HIBIO Logo" style="height: 1.5em; vertical-align: middle; margin-right: 8px;">
-            🎓 研究生生存法則
+            研究生生存法則
             <p>掌握論文閱讀技巧、Meeting討論策略，以及完整的畢業攻略指南</p>
         </div>
         
         <div class="nav-tabs">
-            <button class="nav-tab active" onclick="showSection('phases')">🎯 論文完成階段</button>
-            <button class="nav-tab" onclick="showSection('reading')">📚 論文閱讀技巧</button>
-            <button class="nav-tab" onclick="showSection('meeting')">💬 Meeting技巧</button>
-            <button class="nav-tab" onclick="location.href='./tutorial/index.html'">🧠 教學區</button>
+            <button class="nav-tab active" onclick="showSection('phases')">論文完成階段</button>
+            <button class="nav-tab" onclick="showSection('reading')">論文閱讀技巧</button>
+            <button class="nav-tab" onclick="showSection('meeting')">Meeting技巧</button>
+            <button class="nav-tab" onclick="location.href='./tutorial/index.html'">教學區</button>
         </div>
         
         <div id="reading" class="content-section">
-            <h2 class="section-title">📚 論文閱讀技巧</h2>
+            <h2 class="section-title">論文閱讀技巧</h2>
             <p style="text-align: center; font-size: 1.1em; color: #666; margin-bottom: 30px;">
                 提高閱讀效率和理解深度的實用技巧
             </p>
@@ -392,7 +397,7 @@
                     <div class="tip-title">定期回顧</div>
                     <div class="tip-content">
                         定期回顧已閱讀的論文，鞏固記憶並檢視自己的理解是否有誤，這對於長期的學習非常重要。
-                        <div class="warning">💡 心有餘力再說吧我覺得有點困難</div>
+                        <div class="warning">心有餘力再說吧我覺得有點困難</div>
                     </div>
                 </div>
                 
@@ -406,7 +411,7 @@
         </div>
         
         <div id="meeting" class="content-section">
-            <h2 class="section-title">💬 Meeting技巧與討論技巧</h2>
+            <h2 class="section-title">Meeting技巧與討論技巧</h2>
             <p style="text-align: center; font-size: 1.1em; color: #666; margin-bottom: 30px;">
                 在會議中討論論文是很重要的環節，要先把論文內化成自己的語言
             </p>
@@ -431,7 +436,7 @@
                     <div class="tip-content">
                         請把聽眾代入成一個完全沒接觸過這領域的人，嘗試用簡單的語言解釋論文的<span class="highlight">核心內容</span>，讓大家更容易理解。
                         <div class="meeting-structure">
-                            <h4 style="color: #667eea; margin-bottom: 15px;">📋 分享結構模板</h4>
+                            <h4 style="color: #3b82f6; margin-bottom: 15px;">分享結構模板</h4>
                             <div class="structure-item">
                                 <div class="structure-title">簡介</div>
                                 簡單介紹論文的背景和研究問題，讓大家了解論文的核心。
@@ -461,7 +466,7 @@
                                 所提出的解決方案背後的邏輯與貢獻是什麼，是否可以處理我們的問題。
                             </div>
                         </div>
-                        <div class="warning">💡 學長有提供 Zotero 的模板可以參考<a href="./appendix/template.html">template.html</a>，並修改成自己的版本，說明文件在<a href="./appendix/Zotero圖例.pdf">Zotero圖例.pdf</a>，附件在<a href="./appendix/template.zip">template.zip</a>。</div>
+                        <div class="warning">學長有提供 Zotero 的模板可以參考<a href="./appendix/template.html">template.html</a>，並修改成自己的版本，說明文件在<a href="./appendix/Zotero圖例.pdf">Zotero圖例.pdf</a>，附件在<a href="./appendix/template.zip">template.zip</a>。</div>
                     </div>
                 </div>
                 
@@ -482,7 +487,7 @@
         </div>
         
         <div id="phases" class="content-section active">
-            <h2 class="section-title">🎯 論文完成階段</h2>
+            <h2 class="section-title">論文完成階段</h2>
             <p style="text-align: center; font-size: 1.1em; color: #666; margin-bottom: 30px;">
                 從文獻回顧到正式畢業的完整攻略指南
             </p>
@@ -494,7 +499,7 @@
             <div class="phase-container">
                 <div class="phase-item" data-phase="1">
                     <div class="phase-number">階段 1</div>
-                    <div class="phase-title">📖 文獻回顧</div>
+                    <div class="phase-title">文獻回顧</div>
                     <div class="phase-content">
                         確定研究主題，進行相關文獻的收集和整理。這個時期需要大量survey paper、有開源的可以考慮做實驗，請掌握快速閱讀技巧並累積自己的文獻庫、訓練自己的評斷力，說白一點這個時期就像練武功的蹲馬步在訓練自己的基本功。
                     </div>
@@ -502,7 +507,7 @@
                 
                 <div class="phase-item" data-phase="2">
                     <div class="phase-number">階段 2</div>
-                    <div class="phase-title">🎯 確定主題</div>
+                    <div class="phase-title">確定主題</div>
                     <div class="phase-content">
                         在第一階段累積到一定paper數量後，發現別篇論文的不足之處，並評估是自己在<span class="highlight">"碩士"</span>的研究主題可以完成的，請善用小題大作的技巧，如果你的主題太大會讓你沒辦法收斂<del>可以直接考慮念博士</del>。
                     </div>
@@ -510,7 +515,7 @@
                 
                 <div class="phase-item" data-phase="3">
                     <div class="phase-number">階段 3</div>
-                    <div class="phase-title">🔬 完成實驗</div>
+                    <div class="phase-title">完成實驗</div>
                     <div class="phase-content">
                         在自己鎖定的戰場上進行實驗，並分析結果。這個階段需要不斷地調整實驗方法和思路，確保研究的方向正確，並不一定要鎖定在<span class="highlight">"準確率"</span>這個主戰場上，重點是要找到你的論文可以說嘴的地方，可以是參數量、可以是false alarm下降、可以是用較少的資料訓練、可以是更好的跨場域效果...如果實驗真的不順利請進行止血回到第2步。
                     </div>
@@ -518,7 +523,7 @@
                 
                 <div class="phase-item" data-phase="4">
                     <div class="phase-number">階段 4</div>
-                    <div class="phase-title">✍️ 撰寫論文</div>
+                    <div class="phase-title">撰寫論文</div>
                     <div class="phase-content">
                         請在完成實驗後<span class="highlight">"與老師討論"</span>，並經過老師同意後再進行撰寫。撰寫論文時可以使用latex模板可以讓你更專注於內容而不是格式(但老師很不喜歡xD)，圖片可以利用小畫家、Figma、visual-paradigm、GitMind等等多種強大軟體完成。
                     </div>
@@ -526,7 +531,7 @@
                 
                 <div class="phase-item" data-phase="5">
                     <div class="phase-number">階段 5</div>
-                    <div class="phase-title">📝 初稿完成</div>
+                    <div class="phase-title">初稿完成</div>
                     <div class="phase-content">
                         完成初稿後，請完成對比度審查、圖書館複查、請老師幫忙review，並訂下口試日期。
                     </div>
@@ -534,7 +539,7 @@
                 
                 <div class="phase-item" data-phase="6">
                     <div class="phase-number">階段 6</div>
-                    <div class="phase-title">📋 口試申請</div>
+                    <div class="phase-title">口試申請</div>
                     <div class="phase-content">
                         口試需要完成學校行政包含向系辦提出口試申請、資格審查<a href="https://oaa.ntut.edu.tw/p/412-1008-12780.php?Lang=zh-tw">(可參考學校網頁)</a>(J1 學位考試申請書、J5 考試委員名單、學研倫理課程證明、中文歷年成績單、論文摘要、中文成績證明文件正本)
                     </div>
@@ -542,7 +547,7 @@
                 
                 <div class="phase-item" data-phase="7">
                     <div class="phase-number">階段 7</div>
-                    <div class="phase-title">🎤 口試準備</div>
+                    <div class="phase-title">口試準備</div>
                     <div class="phase-content">
                         在口試前，準備好PPT和口試的內容，並進行rehearsal，調查口委的時間<a href="./appendix/defense_pre.txt">(範例)</a>、確認信<a href="./appendix/defense_check.txt">(範例)</a>，並於口試前一週提供電子版初稿<a href="./appendix/defense_7days.txt">(範例)</a>，並於口試前三天寄出提醒信<a href="./appendix/inf_3days.txt">(範例)</a>。
                     </div>
@@ -550,7 +555,7 @@
                 
                 <div class="phase-item" data-phase="8">
                     <div class="phase-number">階段 8</div>
-                    <div class="phase-title">📅 口試當天</div>
+                    <div class="phase-title">口試當天</div>
                     <div class="phase-content">
                         <a href="https://oaa.ntut.edu.tw/p/412-1008-12780.php?Lang=zh-tw">可參考學校網頁</a>：(1)圖書館複核結果EMAIL回函 (2)原創性報告書 (3)J3學位論文口試委員審定書 (4)J4-學位考試-評表 (5)J11-口試費印領清冊 (6)J15-學位考試-成績表 (7)J16-論文原創性檢核表 (8)準備點心、飲料、伴手禮、初稿等
                     </div>
@@ -558,7 +563,7 @@
                 
                 <div class="phase-item" data-phase="9">
                     <div class="phase-number">階段 9</div>
-                    <div class="phase-title">✅ 口試通過後</div>
+                    <div class="phase-title">口試通過後</div>
                     <div class="phase-content">
                         口試通過後，根據口試委員與指導教授意見訂下最終版本的論文，並完成相關的行政手續。
                     </div>
@@ -566,7 +571,7 @@
                 
                 <div class="phase-item" data-phase="10">
                     <div class="phase-number">階段 10</div>
-                    <div class="phase-title">🎓 畢業</div>
+                    <div class="phase-title">畢業</div>
                     <div class="phase-content">
                         申請離校手續，正式畢業。
                     </div>
