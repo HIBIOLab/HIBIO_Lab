@@ -518,6 +518,232 @@
             font-style: italic;
         }
 
+        /* ===== 互動元件：第 5 課 ROC threshold explorer ===== */
+        .rocd {
+            background: #fbfbfe;
+            border: 1px solid rgba(59, 130, 246, 0.15);
+            border-radius: 12px;
+            padding: 16px 18px;
+            margin: 16px 0;
+        }
+
+        .rocd-bar {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 10px 18px;
+            padding-bottom: 14px;
+            margin-bottom: 16px;
+            border-bottom: 1px dashed rgba(59, 130, 246, 0.25);
+        }
+
+        .rocd-seg {
+            display: inline-flex;
+            gap: 6px;
+        }
+
+        .rocd-seg button, .rocd-btn {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            color: #3b82f6;
+            padding: 6px 14px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .rocd-seg button:hover, .rocd-btn:hover {
+            background: rgba(59, 130, 246, 0.2);
+        }
+
+        .rocd-seg button[aria-pressed="true"] {
+            background: linear-gradient(45deg, #3b82f6, #1d4ed8);
+            border-color: transparent;
+            color: #fff;
+        }
+
+        .rocd-slider {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex: 1 1 300px;
+            min-width: 0;
+        }
+
+        .rocd-slider label {
+            font-weight: 700;
+            font-size: 0.92em;
+            color: #444;
+            white-space: nowrap;
+        }
+
+        .rocd-slider input[type="range"] {
+            flex: 1;
+            min-width: 0;
+            height: 26px;
+            accent-color: #3b82f6;
+        }
+
+        .rocd-thrv {
+            font-family: Consolas, 'Courier New', monospace;
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #1d4ed8;
+            min-width: 4.6ch;
+            text-align: right;
+        }
+
+        .rocd-check {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.86em;
+            color: #777;
+            cursor: pointer;
+        }
+
+        .rocd-plots {
+            display: grid;
+            grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+            gap: 18px;
+        }
+
+        .rocd-panel {
+            min-width: 0;
+        }
+
+        .rocd-panel h5 {
+            margin: 0 0 6px;
+            font-size: 0.92em;
+            color: #3b82f6;
+        }
+
+        .rocd-panel svg {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .rocd-panel svg text {
+            font-family: 'Segoe UI', 'Microsoft JhengHei', 'PingFang TC', sans-serif;
+        }
+
+        .rocd-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px 14px;
+            margin-top: 8px;
+            font-size: 0.8em;
+            color: #666;
+        }
+
+        .rocd-legend span::before {
+            content: '';
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 5px;
+            vertical-align: -1px;
+            background: var(--dot);
+        }
+
+        .rocd-bottom {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
+            gap: 18px;
+            margin-top: 18px;
+        }
+
+        table.rocd-cm {
+            border-collapse: separate;
+            border-spacing: 6px;
+            width: 100%;
+        }
+
+        table.rocd-cm th {
+            font-size: 0.78em;
+            font-weight: 600;
+            color: #777;
+            text-align: center;
+        }
+
+        table.rocd-cm td {
+            text-align: center;
+            border-radius: 8px;
+            padding: 8px 4px;
+            color: #fff;
+            font-family: Consolas, 'Courier New', monospace;
+            font-size: 1.3em;
+            font-weight: 700;
+        }
+
+        table.rocd-cm td small {
+            display: block;
+            font-family: 'Segoe UI', 'Microsoft JhengHei', sans-serif;
+            font-size: 0.58em;
+            font-weight: 600;
+            opacity: 0.95;
+        }
+
+        .rocd-metrics {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 10px;
+        }
+
+        .rocd-m {
+            background: rgba(59, 130, 246, 0.08);
+            border-radius: 10px;
+            padding: 10px 12px;
+        }
+
+        .rocd-m .rocd-k {
+            font-size: 0.76em;
+            line-height: 1.45;
+            color: #777;
+        }
+
+        .rocd-m .rocd-v {
+            font-family: Consolas, 'Courier New', monospace;
+            font-size: 1.35em;
+            font-weight: 700;
+            color: #1d4ed8;
+        }
+
+        .rocd-m .rocd-f {
+            font-family: Consolas, 'Courier New', monospace;
+            font-size: 0.72em;
+            color: #888;
+        }
+
+        .rocd-story {
+            background: rgba(29, 78, 216, 0.08);
+            border-left: 4px solid #1d4ed8;
+            border-radius: 5px;
+            padding: 10px 14px;
+            margin-top: 12px;
+            font-size: 0.9em;
+            color: #555;
+        }
+
+        .rocd-story b {
+            color: #1d4ed8;
+        }
+
+        .rocd-note {
+            margin-top: 12px;
+            font-size: 0.8em;
+            color: #888;
+        }
+
+        @media (max-width: 900px) {
+            .rocd-plots, .rocd-bottom { grid-template-columns: 1fr; }
+            .rocd-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
+
         @media (max-width: 768px) {
             .container { padding: 10px; }
             .header h1 { font-size: 1.6em; }
@@ -995,6 +1221,64 @@ python precision_recall_f1_demo.py</pre>
                             </svg>
                         </div>
 
+                        <h4>互動：ROC 曲線是怎麼一點一點畫出來的</h4>
+                        <p>公式背起來容易忘，但只要記住一件事就不會亂：<strong>ROC 上的每一個點，就是「某一個 threshold 下的一組 (FPR, Sensitivity)」</strong>。下面這個小工具用真實資料跑出來的分數讓你直接拉 threshold —— 左邊看每位病人被切到哪一邊、四個格子怎麼變動，右邊看對應的 ROC 點怎麼在曲線上滑動。</p>
+                        <div class="rocd">
+                            <div class="rocd-bar">
+                                <div class="rocd-seg" role="group" aria-label="選擇模型用的特徵數">
+                                    <button type="button" id="rocd-easy" aria-pressed="true">用 30 個特徵</button>
+                                    <button type="button" id="rocd-hard" aria-pressed="false">只用 2 個特徵</button>
+                                </div>
+                                <div class="rocd-slider">
+                                    <label for="rocd-thr">threshold</label>
+                                    <input id="rocd-thr" type="range" min="0" max="1.01" step="0.01" value="0.5">
+                                    <span class="rocd-thrv" id="rocd-thrv">0.50</span>
+                                </div>
+                                <button type="button" class="rocd-btn" id="rocd-play">▶ 自動掃過</button>
+                                <button type="button" class="rocd-btn" id="rocd-reset">清除軌跡</button>
+                                <label class="rocd-check"><input type="checkbox" id="rocd-showcurve" checked> 顯示完整 ROC 曲線</label>
+                            </div>
+
+                            <div class="rocd-plots">
+                                <div class="rocd-panel">
+                                    <h5>每位病人的分數（模型預測為 Malignant 的機率）</h5>
+                                    <svg id="rocd-strip" viewBox="0 0 640 380" role="img" aria-label="病人分數分布與 threshold 切線"></svg>
+                                    <div class="rocd-legend">
+                                        <span style="--dot:#4caf50">TP 惡性，判惡性</span>
+                                        <span style="--dot:#e57373">FN 惡性，判良性（漏診）</span>
+                                        <span style="--dot:#ff9800">FP 良性，判惡性（誤報）</span>
+                                        <span style="--dot:#3b82f6">TN 良性，判良性</span>
+                                    </div>
+                                </div>
+                                <div class="rocd-panel">
+                                    <h5>對應的 ROC 曲線</h5>
+                                    <svg id="rocd-roc" viewBox="0 0 400 380" role="img" aria-label="ROC 曲線與目前 threshold 對應的點"></svg>
+                                </div>
+                            </div>
+
+                            <div class="rocd-bottom">
+                                <div class="rocd-panel">
+                                    <h5>這個 threshold 的 confusion matrix</h5>
+                                    <table class="rocd-cm">
+                                        <tr><th></th><th>判 Malignant</th><th>判 Benign</th></tr>
+                                        <tr><th>真 Malignant</th><td id="rocd-cTP" style="background:#4caf50"></td><td id="rocd-cFN" style="background:#e57373"></td></tr>
+                                        <tr><th>真 Benign</th><td id="rocd-cFP" style="background:#ff9800"></td><td id="rocd-cTN" style="background:#3b82f6"></td></tr>
+                                    </table>
+                                </div>
+                                <div class="rocd-panel">
+                                    <h5>這個 threshold 對應的 ROC 座標</h5>
+                                    <div class="rocd-metrics">
+                                        <div class="rocd-m"><div class="rocd-k">Sensitivity（ROC 的 y 軸）</div><div class="rocd-v" id="rocd-mTPR"></div><div class="rocd-f" id="rocd-fTPR"></div></div>
+                                        <div class="rocd-m"><div class="rocd-k">FPR（ROC 的 x 軸）</div><div class="rocd-v" id="rocd-mFPR"></div><div class="rocd-f" id="rocd-fFPR"></div></div>
+                                        <div class="rocd-m"><div class="rocd-k">Specificity = 1 − FPR</div><div class="rocd-v" id="rocd-mSPC"></div><div class="rocd-f" id="rocd-fSPC"></div></div>
+                                    </div>
+                                    <p class="rocd-story" id="rocd-story"></p>
+                                </div>
+                            </div>
+
+                            <p class="rocd-note">資料：Breast Cancer Wisconsin (Diagnostic)（即第 1 課那份 569 位病人的 sklearn 內建資料集），切出的測試集 171 人，其中 Malignant 64 人、Benign 107 人；模型是標準化後的 logistic regression。「只用 2 個特徵」版本只餵 <code>texture_mean</code> 與 <code>smoothness_mean</code>，用來呈現兩類分數重疊很多時 ROC 會變成什麼樣子。</p>
+                        </div>
+                        <p>幾個值得停下來觀察的地方：<strong>（1）</strong>threshold 拉到 1 以上時沒有人被判惡性，點停在左下角 (0, 0)；拉到 0 時全部判惡性，點跑到右上角 (1, 1)，所以 ROC 兩端必定被釘在這兩個角落。<strong>（2）</strong>threshold 往左移，抓到的惡性變多（sensitivity 上升）但誤報也變多（FPR 上升），點只會往右上走 —— 這就是 sensitivity 與 specificity 的取捨，沒有白吃的午餐。<strong>（3）</strong>切到「只用 2 個特徵」，兩類的分數擠在一起，曲線就被壓往對角線、AUC 從 0.998 掉到 0.827：<strong>AUC 衡量的是「分數能不能把兩類分開」，跟你最後選哪個 threshold 無關</strong>。</p>
                         <h4>為什麼 ROC-AUC 在不平衡資料下可能失真</h4>
                         <p>ROC 的 x 軸 FPR 定義如公式 10，分母是「所有真正的陰性樣本」。當陰性樣本數量龐大時（例如篩檢資料中陰性佔 98%），就算 FP 的數量不少，除以龐大的 TN 之後 FPR 還是會很小，於是 ROC 曲線看起來「貼著左上角」、AUC 很漂亮。但 <strong>PR curve</strong> 的 x 軸是 Recall、y 軸是 Precision，Precision 的分母是「所有被模型判斷為陽性的樣本」，這個數字對「模型到底誤報了多少」非常敏感，因此在極度不平衡資料下，PR-AUC 才是更誠實的指標。</p>
                         <div class="formula-box">
@@ -1016,7 +1300,7 @@ python roc_auc_demo.py</pre>
                         <div class="exercise-box">
                             <h4>📝 課後練習</h4>
                             <ol>
-                                <li>掃描不同的決策閾值（0.1~0.9），計算每個閾值下的 sensitivity 與 specificity，畫出「sensitivity vs 1-specificity」，確認畫出來的點會落在 ROC curve 上。</li>
+                                <li>掃描不同的決策閾值（0.1~0.9），計算每個閾值下的 sensitivity 與 specificity，畫出「sensitivity vs 1-specificity」，確認畫出來的點會落在 ROC curve 上（上面的互動工具就是在做這件事，可以先拉一遍再自己動手算）。</li>
                                 <li>把 <code>POSITIVE_RATIO</code> 改成 0.3（比較不極端），重新比較 ROC-AUC 與 PR-AUC 的差距是否縮小？</li>
                             </ol>
                         </div>
@@ -2401,6 +2685,219 @@ python augmentation_demo.py</pre>
         }
         window.onload = sendHeight;
         window.onresize = sendHeight;
+    </script>
+    <!-- 第 5 課互動元件：ROC threshold explorer -->
+    <script>
+    (function () {
+        var ROCD_DATA = {"easy": {"s": [0.1134, 0.0023, 0.0001, 0.0031, 0.019, 0.0014, 0.9999, 0.0111, 0.899, 0.0019, 0.0101, 1.0, 0.0003, 0.0004, 0.0001, 0.0049, 0.0014, 1.0, 1.0, 1.0, 1.0, 0.4815, 1.0, 0.0003, 0.0078, 0.9836, 1.0, 1.0, 0.0006, 0.5369, 0.8634, 0.0, 0.0025, 0.8571, 0.0, 0.0573, 1.0, 0.9874, 0.002, 1.0, 1.0, 0.0004, 0.9998, 0.0, 0.0132, 0.9984, 0.3729, 0.0006, 0.9984, 0.0004, 0.0027, 0.7339, 0.0014, 0.0077, 0.0001, 0.0002, 0.0643, 0.0001, 0.2119, 0.9498, 0.0348, 0.004, 0.0146, 0.9915, 1.0, 0.891, 1.0, 0.0002, 0.0076, 0.0002, 0.001, 0.0828, 0.0104, 0.0043, 1.0, 0.0001, 0.0235, 0.9998, 0.0003, 0.0788, 0.0409, 0.0166, 0.0143, 1.0, 0.0007, 0.9997, 0.0001, 0.0041, 0.0012, 0.0017, 0.0004, 0.9348, 0.9999, 1.0, 0.9999, 1.0, 0.0011, 0.0, 0.0004, 0.0002, 0.0778, 1.0, 1.0, 0.0023, 0.9842, 0.0, 0.9951, 1.0, 0.0, 1.0, 0.0072, 0.9685, 0.0044, 0.0004, 0.9974, 0.0079, 0.0462, 0.9996, 0.0003, 0.0001, 0.9992, 0.9962, 0.1461, 0.965, 0.0, 0.7001, 0.0158, 0.0144, 0.9999, 0.9693, 0.9996, 0.0005, 0.0021, 0.9995, 0.0002, 0.2427, 0.0006, 0.2437, 0.0009, 0.0047, 0.0005, 1.0, 0.0022, 0.0, 0.0175, 0.0756, 0.0004, 0.1009, 0.0591, 1.0, 0.9161, 0.0, 0.0004, 0.0116, 0.0009, 0.1972, 0.0, 0.0335, 0.994, 0.845, 0.0001, 0.053, 0.0006, 0.0, 0.0001, 0.0015, 0.0023, 0.7199, 0.5307, 0.0074, 1.0], "y": [0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1, 0, 1, 1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 0, 0, 1, 1, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1]}, "hard": {"s": [0.1493, 0.1349, 0.0519, 0.3857, 0.4729, 0.0423, 0.1504, 0.1324, 0.458, 0.1894, 0.23, 0.9339, 0.0334, 0.038, 0.3382, 0.1095, 0.2917, 0.5078, 0.3033, 0.3297, 0.5588, 0.1141, 0.6638, 0.0649, 0.1371, 0.4113, 0.3935, 0.5766, 0.0242, 0.8793, 0.7054, 0.0327, 0.0519, 0.8194, 0.0656, 0.1385, 0.3221, 0.2347, 0.323, 0.5404, 0.8912, 0.039, 0.5302, 0.1398, 0.5704, 0.9599, 0.2984, 0.3615, 0.8797, 0.0883, 0.3594, 0.4219, 0.2351, 0.1935, 0.181, 0.425, 0.1762, 0.0421, 0.8312, 0.8193, 0.2292, 0.3052, 0.0821, 0.7842, 0.4163, 0.8314, 0.8712, 0.1165, 0.0579, 0.1019, 0.0237, 0.5032, 0.4744, 0.1324, 0.8479, 0.013, 0.1359, 0.3117, 0.4377, 0.6439, 0.7073, 0.1932, 0.2351, 0.951, 0.0481, 0.4768, 0.5011, 0.6326, 0.0426, 0.1797, 0.88, 0.2451, 0.8567, 0.8222, 0.7112, 0.3187, 0.7599, 0.4171, 0.0466, 0.1603, 0.12, 0.6801, 0.758, 0.3144, 0.2347, 0.4952, 0.5051, 0.8414, 0.0903, 0.5459, 0.2712, 0.2435, 0.026, 0.2426, 0.3804, 0.1889, 0.4246, 0.124, 0.399, 0.0377, 0.2647, 0.854, 0.6666, 0.8644, 0.4125, 0.4581, 0.2852, 0.0261, 0.7927, 0.6587, 0.6932, 0.0701, 0.1514, 0.514, 0.1578, 0.767, 0.3875, 0.8452, 0.0371, 0.1556, 0.6277, 0.6037, 0.121, 0.0856, 0.4888, 0.3386, 0.106, 0.0713, 0.212, 0.9355, 0.4902, 0.1476, 0.0348, 0.5148, 0.1131, 0.6087, 0.0295, 0.1989, 0.5057, 0.3895, 0.3167, 0.3159, 0.1829, 0.1355, 0.373, 0.5714, 0.1358, 0.5246, 0.3744, 0.492, 0.8556], "y": [0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1, 0, 1, 1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 0, 0, 1, 1, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1]}};
+
+        var ds = 'easy', trail = [], playing = null;
+        var NS = 'http://www.w3.org/2000/svg';
+        var COL = {
+            tp: '#4caf50', fn: '#e57373', fp: '#ff9800', tn: '#3b82f6',
+            grid: 'rgba(59, 130, 246, 0.18)', muted: '#999', label: '#555',
+            accent: '#1d4ed8', shade: 'rgba(59, 130, 246, 0.07)',
+            curve: '#8ab4f8', panel: '#fbfbfe'
+        };
+
+        function $r(id) { return document.getElementById(id); }
+
+        function el(tag, attrs, parent) {
+            var e = document.createElementNS(NS, tag);
+            for (var k in attrs) { e.setAttribute(k, attrs[k]); }
+            if (parent) { parent.appendChild(e); }
+            return e;
+        }
+
+        function fmtT(t) { return t > 1 ? '> 1.00' : t.toFixed(2); }
+
+        function counts(t) {
+            var d = ROCD_DATA[ds], TP = 0, FN = 0, FP = 0, TN = 0;
+            for (var i = 0; i < d.s.length; i++) {
+                var pos = d.s[i] >= t, m = d.y[i] === 1;
+                if (m && pos) { TP++; } else if (m) { FN++; } else if (pos) { FP++; } else { TN++; }
+            }
+            return { TP: TP, FN: FN, FP: FP, TN: TN };
+        }
+
+        function fullCurve() {
+            var uniq = ROCD_DATA[ds].s.filter(function (v, i, a) { return a.indexOf(v) === i; });
+            uniq.sort(function (a, b) { return b - a; });
+            var ts = [Infinity].concat(uniq, [-Infinity]);
+            return ts.map(function (t) {
+                var c = counts(t);
+                return [c.FP / (c.FP + c.TN), c.TP / (c.TP + c.FN)];
+            });
+        }
+
+        function auc(pts) {
+            var a = 0;
+            for (var i = 1; i < pts.length; i++) {
+                a += (pts[i][0] - pts[i - 1][0]) * (pts[i][1] + pts[i - 1][1]) / 2;
+            }
+            return a;
+        }
+
+        // 固定的隨機抖動：讓每次重畫時，同一位病人都落在同一個高度
+        function jit(i) { var x = Math.sin(i * 12.9898) * 43758.5453; return x - Math.floor(x); }
+
+        // ---- 左圖：每位病人的分數 ----
+        var SX0 = 70, SX1 = 620, ROW = { 1: 80, 0: 210 }, ROWH = 100;
+        function sx(v) { return SX0 + Math.min(v, 1.012) * (SX1 - SX0); }
+
+        function drawStrip(t) {
+            var svg = $r('rocd-strip');
+            svg.innerHTML = '';
+            el('rect', { x: sx(t), y: 30, width: Math.max(0, SX1 - sx(t)), height: 300, fill: COL.shade }, svg);
+            [1, 0].forEach(function (cls) {
+                var cy = ROW[cls] + ROWH / 2;
+                el('line', { x1: SX0, x2: SX1, y1: cy, y2: cy, stroke: COL.grid, 'stroke-width': 1 }, svg);
+                var lab = el('text', { x: SX0 - 10, y: cy + 4, 'text-anchor': 'end', 'font-size': 13, 'font-weight': 700, fill: COL.label }, svg);
+                lab.textContent = cls ? '惡性 M' : '良性 B';
+            });
+            var d = ROCD_DATA[ds];
+            for (var i = 0; i < d.s.length; i++) {
+                var m = d.y[i] === 1, pos = d.s[i] >= t;
+                var col = m ? (pos ? COL.tp : COL.fn) : (pos ? COL.fp : COL.tn);
+                el('circle', {
+                    cx: sx(d.s[i]), cy: ROW[d.y[i]] + 6 + jit(i + 1) * (ROWH - 12),
+                    r: 4.6, fill: col, stroke: COL.panel, 'stroke-width': 0.8
+                }, svg);
+            }
+            el('line', { x1: SX0, x2: SX1, y1: 335, y2: 335, stroke: COL.muted, 'stroke-width': 1 }, svg);
+            [0, 0.2, 0.4, 0.6, 0.8, 1].forEach(function (v) {
+                el('line', { x1: sx(v), x2: sx(v), y1: 335, y2: 340, stroke: COL.muted }, svg);
+                var tx = el('text', { x: sx(v), y: 356, 'text-anchor': 'middle', 'font-size': 12, fill: COL.muted }, svg);
+                tx.textContent = v.toFixed(1);
+            });
+            var ax = el('text', { x: SX1, y: 376, 'text-anchor': 'end', 'font-size': 12, fill: COL.muted }, svg);
+            ax.textContent = '分數（越高越像惡性）';
+            el('line', { x1: sx(t), x2: sx(t), y1: 26, y2: 332, stroke: COL.accent, 'stroke-width': 2.5 }, svg);
+            var tl = el('text', {
+                x: sx(t), y: 20, 'font-size': 12.5, 'font-weight': 700, fill: COL.accent,
+                'text-anchor': t > 0.85 ? 'end' : (t < 0.15 ? 'start' : 'middle')
+            }, svg);
+            tl.textContent = 'threshold ' + fmtT(t);
+            var lt = el('text', { x: SX0 + 4, y: 46, 'font-size': 12, fill: COL.muted }, svg);
+            lt.textContent = t > 0.12 ? '← 判良性' : '';
+            var rt = el('text', { x: SX1 - 4, y: 46, 'text-anchor': 'end', 'font-size': 12, 'font-weight': 700, fill: COL.tp }, svg);
+            rt.textContent = t < 0.88 ? '判惡性 →' : '';
+        }
+
+        // ---- 右圖：ROC 曲線 ----
+        var RX0 = 58, RX1 = 380, RY0 = 20, RY1 = 342;
+        function rx(v) { return RX0 + v * (RX1 - RX0); }
+        function ry(v) { return RY1 - v * (RY1 - RY0); }
+
+        function drawROC(t) {
+            var svg = $r('rocd-roc');
+            svg.innerHTML = '';
+            [0, 0.2, 0.4, 0.6, 0.8, 1].forEach(function (v) {
+                el('line', { x1: rx(v), x2: rx(v), y1: RY0, y2: RY1, stroke: COL.grid }, svg);
+                el('line', { x1: RX0, x2: RX1, y1: ry(v), y2: ry(v), stroke: COL.grid }, svg);
+                var a = el('text', { x: rx(v), y: RY1 + 16, 'text-anchor': 'middle', 'font-size': 12, fill: COL.muted }, svg);
+                a.textContent = v.toFixed(1);
+                var b = el('text', { x: RX0 - 8, y: ry(v) + 4, 'text-anchor': 'end', 'font-size': 12, fill: COL.muted }, svg);
+                b.textContent = v.toFixed(1);
+            });
+            el('line', { x1: rx(0), y1: ry(0), x2: rx(1), y2: ry(1), stroke: COL.muted, 'stroke-dasharray': '4 4' }, svg);
+            var xl = el('text', { x: (RX0 + RX1) / 2, y: 376, 'text-anchor': 'middle', 'font-size': 12, fill: COL.muted }, svg);
+            xl.textContent = 'FPR（= 1 − specificity）';
+            var yl = el('text', {
+                x: 14, y: (RY0 + RY1) / 2, 'text-anchor': 'middle', 'font-size': 12, fill: COL.muted,
+                transform: 'rotate(-90 14 ' + ((RY0 + RY1) / 2) + ')'
+            }, svg);
+            yl.textContent = 'Sensitivity';
+            var pts = fullCurve();
+            if ($r('rocd-showcurve').checked) {
+                el('polyline', {
+                    points: pts.map(function (p) { return rx(p[0]) + ',' + ry(p[1]); }).join(' '),
+                    fill: 'none', stroke: COL.curve, 'stroke-width': 2.5
+                }, svg);
+                var at = el('text', { x: RX1 - 6, y: RY1 - 10, 'text-anchor': 'end', 'font-size': 13, 'font-weight': 700, fill: COL.label }, svg);
+                at.textContent = 'AUC = ' + auc(pts).toFixed(3);
+            }
+            trail.forEach(function (p) {
+                el('circle', { cx: rx(p[0]), cy: ry(p[1]), r: 3.2, fill: COL.accent, opacity: 0.4 }, svg);
+            });
+            var c = counts(t);
+            var fpr = c.FP / (c.FP + c.TN), tpr = c.TP / (c.TP + c.FN);
+            el('line', { x1: rx(fpr), x2: rx(fpr), y1: ry(tpr), y2: RY1, stroke: COL.fp, 'stroke-dasharray': '3 3', 'stroke-width': 1.5 }, svg);
+            el('line', { x1: RX0, x2: rx(fpr), y1: ry(tpr), y2: ry(tpr), stroke: COL.tp, 'stroke-dasharray': '3 3', 'stroke-width': 1.5 }, svg);
+            el('circle', { cx: rx(fpr), cy: ry(tpr), r: 7.5, fill: COL.accent, stroke: COL.panel, 'stroke-width': 2 }, svg);
+            var lbl = el('text', {
+                x: rx(fpr) + (fpr > 0.6 ? -12 : 12), y: ry(tpr) + (tpr > 0.9 ? 22 : -10),
+                'text-anchor': fpr > 0.6 ? 'end' : 'start', 'font-size': 12.5, 'font-weight': 700, fill: COL.accent
+            }, svg);
+            lbl.textContent = '(' + fpr.toFixed(2) + ', ' + tpr.toFixed(2) + ')';
+        }
+
+        function pct(v) { return (v * 100).toFixed(1) + '%'; }
+
+        function rocdUpdate() {
+            var t = parseFloat($r('rocd-thr').value);
+            $r('rocd-thrv').textContent = fmtT(t);
+            var c = counts(t);
+            var tpr = c.TP / (c.TP + c.FN), fpr = c.FP / (c.FP + c.TN);
+            var key = fpr.toFixed(4) + ',' + tpr.toFixed(4);
+            var seen = trail.some(function (p) { return p.key === key; });
+            if (!seen) { var p = [fpr, tpr]; p.key = key; trail.push(p); }
+            $r('rocd-cTP').innerHTML = c.TP + '<small>TP</small>';
+            $r('rocd-cFN').innerHTML = c.FN + '<small>FN</small>';
+            $r('rocd-cFP').innerHTML = c.FP + '<small>FP</small>';
+            $r('rocd-cTN').innerHTML = c.TN + '<small>TN</small>';
+            $r('rocd-mTPR').textContent = pct(tpr);
+            $r('rocd-fTPR').textContent = 'TP/(TP+FN) = ' + c.TP + '/' + (c.TP + c.FN);
+            $r('rocd-mFPR').textContent = pct(fpr);
+            $r('rocd-fFPR').textContent = 'FP/(FP+TN) = ' + c.FP + '/' + (c.FP + c.TN);
+            $r('rocd-mSPC').textContent = pct(1 - fpr);
+            $r('rocd-fSPC').textContent = 'TN/(TN+FP) = ' + c.TN + '/' + (c.TN + c.FP);
+            $r('rocd-story').innerHTML = t > 1
+                ? 'threshold 設在 <b>1 以上</b>：分數最高也只有 1，所以沒有人被判惡性。64 位惡性全部漏掉、107 位良性也沒有任何誤報，這就是 ROC 的起點 (0, 0)。把 threshold 往左拉，點就開始往右上走。'
+                : 'threshold 設在 <b>' + t.toFixed(2) + '</b>：分數 ≥ ' + t.toFixed(2) + ' 的人判惡性。64 位惡性抓到 <b>' + c.TP + '</b> 位、漏掉 ' + c.FN + ' 位；107 位良性中有 <b>' + c.FP + '</b> 位被誤報。threshold 往左移，點往右上走（抓得多、誤報也多）；往右移，點往左下走。';
+            drawStrip(t);
+            drawROC(t);
+        }
+
+        function rocdSetDs(name) {
+            ds = name;
+            trail = [];
+            $r('rocd-easy').setAttribute('aria-pressed', name === 'easy');
+            $r('rocd-hard').setAttribute('aria-pressed', name === 'hard');
+            rocdUpdate();
+        }
+
+        $r('rocd-easy').addEventListener('click', function () { rocdSetDs('easy'); });
+        $r('rocd-hard').addEventListener('click', function () { rocdSetDs('hard'); });
+        $r('rocd-thr').addEventListener('input', rocdUpdate);
+        $r('rocd-showcurve').addEventListener('change', rocdUpdate);
+        $r('rocd-reset').addEventListener('click', function () { trail = []; rocdUpdate(); });
+        $r('rocd-play').addEventListener('click', function () {
+            if (playing) {
+                clearInterval(playing);
+                playing = null;
+                $r('rocd-play').textContent = '▶ 自動掃過';
+                return;
+            }
+            trail = [];
+            $r('rocd-thr').value = 1.01;
+            rocdUpdate();
+            $r('rocd-play').textContent = '■ 停止';
+            var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            playing = setInterval(function () {
+                var v = Math.round((parseFloat($r('rocd-thr').value) - 0.01) * 100) / 100;
+                $r('rocd-thr').value = Math.max(0, v);
+                rocdUpdate();
+                if (v <= 0) {
+                    clearInterval(playing);
+                    playing = null;
+                    $r('rocd-play').textContent = '▶ 自動掃過';
+                }
+            }, reduce ? 20 : 90);
+        });
+
+        rocdUpdate();
+    }());
     </script>
     <script src="https://jsdelivr.net"></script>
 </body>
